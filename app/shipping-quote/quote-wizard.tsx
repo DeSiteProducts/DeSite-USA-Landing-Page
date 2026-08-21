@@ -205,7 +205,7 @@ export default function QuoteWizard({ initialModel, isError }: QuoteWizardProps)
       </div>
       <main className="flex px-2 py-2 text-[#03122B] sm:px-2 md:px-2">
 
-        <section className="mx-auto grid w-full max-w-5xl overflow-hidden rounded-lg border border-white/20 bg-[#F8FBFF] shadow-2xl md:min-h-[640px] md:grid-cols-[0.9fr_1.35fr]">
+        <section className="mx-auto grid w-full max-w-5xl overflow-hidden rounded-lg border border-white/20 bg-[#F8FBFF] shadow-2xl md:grid-cols-[0.9fr_1.35fr]">
 
           <aside className="flex flex-col justify-between bg-gradient-to-b from-[#073073] to-[#03122B] p-6 text-white md:p-8">
             <div>
