@@ -1,13 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { Suspense, useEffect, useState } from "react";
+import dynamic from "next/dynamic";
+import { useState } from "react";
 import VimeoSlider from "./models/_components/VimeoSlider";
 import ShippingQuoteButton from "./models/_components/ShippingQuoteButton";
-import ShippingQuoteSection from "./models/_components/ShippingQuoteSection";
-import MachineModelModal from "./models/_components/modalProductPage";
+import DeferredShippingQuoteSection from "./models/_components/DeferredShippingQuoteSection";
 import ImageSlider from "./models/_components/ImageSlider";
+
+const MachineModelModal = dynamic(
+  () => import("./models/_components/modalProductPage"),
+  { ssr: false }
+);
 
 const sliderVideos108 = [
   {
@@ -256,7 +260,6 @@ export default function Home() {
   const [activeSlideSlg108, setActiveSlideSlg108] = useState(0);
   const [activeSlideSlg78, setActiveSlideSlg78] = useState(0);
   const [activeSlideSlg56, setActiveSlideSlg56] = useState(0);
-  const [currency, setCurrency] = useState<"USD" | "CAD">("USD");
   const [isMachineModalOpen, setIsMachineModalOpen] = useState(false);
   const [selectedMachineModel, setSelectedMachineModel] = useState("");
 
@@ -268,26 +271,6 @@ export default function Home() {
     setIsMachineModalOpen(false);
     setSelectedMachineModel("");
   };
-
-  useEffect(() => {
-    const detectCurrencyByCountry = async () => {
-      try {
-        const response = await fetch("/api/geo", { cache: "no-store" });
-        if (!response.ok) return;
-
-        const data = (await response.json()) as { countryCode?: string | null };
-        const countryCode = (data.countryCode || "").toUpperCase();
-
-        setCurrency(countryCode === "CA" ? "CAD" : "USD");
-      } catch {
-        setCurrency("USD");
-      }
-    };
-
-    void detectCurrencyByCountry();
-  }, []);
-
-
 
   const trackCallClick = () => {
     const payload = {
@@ -341,7 +324,7 @@ export default function Home() {
               />
 
               <p className="mt-3 text-center text-3xl font-extrabold tracking-tight text-[#082F72] md:text-4xl">
-                {currency === "CAD" ? "$19,900 USD" : "$19,900 USD"}
+                $19,900 USD
               </p>
             </div>
 
@@ -377,7 +360,7 @@ export default function Home() {
               />
 
               <p className="mt-3 text-center text-3xl font-extrabold tracking-tight text-white md:text-4xl">
-                {currency === "CAD" ? "$13,900 USD" : "$13,900 USD"}
+                $13,900 USD
               </p>
             </div>
             <ShippingQuoteButton model="78 ProScreen" />
@@ -413,7 +396,7 @@ export default function Home() {
               />
 
               <p className="mt-3 text-center text-3xl font-extrabold tracking-tight text-[#082F72] md:text-4xl">
-                {currency === "CAD" ? "$7,900 USD" : "$7,900 USD"}
+                $7,900 USD
               </p>
             </div>
             <ShippingQuoteButton model="68 ProScreen" />
@@ -460,7 +443,7 @@ export default function Home() {
               />
 
               <p className="mt-3 text-center text-3xl font-extrabold tracking-tight text-[#082F72] md:text-4xl">
-                {currency === "CAD" ? "$14,900 USD" : "$14,900 USD"}
+                $14,900 USD
               </p>
             </div>
             <ShippingQuoteButton model="SLG 108" />
@@ -495,7 +478,7 @@ export default function Home() {
               />
 
               <p className="mt-3 text-center text-3xl font-extrabold tracking-tight text-white md:text-4xl">
-                {currency === "CAD" ? "$7,900 USD" : "$7,900 USD"}
+                $7,900 USD
               </p>
             </div>
             <ShippingQuoteButton model="SLG 78" />
@@ -530,7 +513,7 @@ export default function Home() {
               />
 
               <p className="mt-3 text-center text-3xl font-extrabold tracking-tight text-[#082F72] md:text-4xl">
-                {currency === "CAD" ? "$4,500 USD" : "$4,500 USD"}
+                $4,500 USD
               </p>
             </div>
             <ShippingQuoteButton model="SLG 56" />
@@ -653,9 +636,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <Suspense fallback={null}>
-          <ShippingQuoteSection />
-        </Suspense>
+        <DeferredShippingQuoteSection />
 
         <section
           id="contacto"

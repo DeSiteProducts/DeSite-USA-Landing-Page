@@ -1,6 +1,7 @@
 "use client";
 
 import type React from "react";
+import { useEffect, useRef, useState } from "react";
 
 const MAX_VISIBLE_DOTS = 12;
 
@@ -54,6 +55,8 @@ export default function VimeoSlider({
   setActiveSlide,
   dark = false,
 }: VimeoSliderProps) {
+  const playerRef = useRef<HTMLDivElement>(null);
+  const [shouldLoadPlayer, setShouldLoadPlayer] = useState(false);
   const totalSlides = videos.length;
 
   const dotCount = getDotCount(totalSlides);
@@ -79,6 +82,23 @@ export default function VimeoSlider({
 
   const currentVideo = videos[activeSlide];
 
+  useEffect(() => {
+    const player = playerRef.current;
+    if (!player || shouldLoadPlayer) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setShouldLoadPlayer(true);
+        observer.disconnect();
+      },
+      { rootMargin: "400px 0px" }
+    );
+
+    observer.observe(player);
+    return () => observer.disconnect();
+  }, [shouldLoadPlayer]);
+
   if (!currentVideo) {
     return null;
   }
@@ -93,17 +113,19 @@ export default function VimeoSlider({
             : "border-[#E0E3E8] bg-[#03122B]/5"
         }`}
       >
-        <div className="aspect-video w-full">
-          <iframe
-            key={currentVideo.url}
-            src={`${currentVideo.url}?autoplay=0&title=0&byline=0&portrait=0`}
-            title={currentVideo.title}
-            className="h-full w-full"
-            loading="lazy"
-            allow="fullscreen; picture-in-picture"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-          />
+        <div ref={playerRef} className="aspect-video w-full">
+          {shouldLoadPlayer ? (
+            <iframe
+              key={currentVideo.url}
+              src={`${currentVideo.url}?autoplay=0&title=0&byline=0&portrait=0`}
+              title={currentVideo.title}
+              className="h-full w-full"
+              loading="lazy"
+              allow="fullscreen; picture-in-picture"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
+          ) : null}
         </div>
 
         {/* Previous */}
