@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import VimeoSlider from "./models/_components/VimeoSlider";
 import ShippingQuoteButton from "./models/_components/ShippingQuoteButton";
 import ShippingQuoteSection from "./models/_components/ShippingQuoteSection";
@@ -538,7 +538,9 @@ export default function Home() {
             </table>
           </div>
         </section>
-       <ShippingQuoteSection />
+       <Suspense fallback={null}>
+         <ShippingQuoteSection />
+       </Suspense>
 
         <section
           id="contacto"
