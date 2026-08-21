@@ -6,6 +6,7 @@ import { Suspense, useEffect, useState } from "react";
 import VimeoSlider from "./models/_components/VimeoSlider";
 import ShippingQuoteButton from "./models/_components/ShippingQuoteButton";
 import ShippingQuoteSection from "./models/_components/ShippingQuoteSection";
+import MachineModelModal from "./models/_components/modalProductPage";
 
 const sliderVideos108 = [
   {
@@ -52,7 +53,7 @@ const sliderVideos108 = [
     title: "108 PORTABILITY",
     url: "https://player.vimeo.com/video/1040503019?h=7f9fc08e96",
   },
-    {
+  {
     title: "108 Tilting Screen Deck",
     url: "https://player.vimeo.com/video/892022172?h=7f9fc08e96",
   },
@@ -111,8 +112,8 @@ const sliderVideos78 = [
 ];
 
 const sliderVideos68 = [
-  
-   {
+
+  {
     title: "68 Pro Screen Full Overview",
     url: "https://player.vimeo.com/video/1079537676?h=21b032376a",
   },
@@ -140,7 +141,7 @@ const sliderVideos68 = [
     title: "68 Pro Screen Overview",
     url: "https://player.vimeo.com/video/1040504352?h=d21aacc03c",
   },
-   {
+  {
     title: "68 Hompage",
     url: "https://player.vimeo.com/video/892414970?h=d21aacc03c",
   },
@@ -190,7 +191,7 @@ const sliderVideosSlg78 = [
     title: "SLG 78 Spring Loaded Grizzly Screening Dirt",
     url: "https://player.vimeo.com/video/1129896297?share=copy&fl=sv&fe=ci",
   },
-   {
+  {
     title: "78 GRIZZLY",
     url: "https://player.vimeo.com/video/1123779281?share=copy&fl=sv&fe=ci",
   },
@@ -229,8 +230,17 @@ export default function Home() {
   const [activeSlideSlg78, setActiveSlideSlg78] = useState(0);
   const [activeSlideSlg56, setActiveSlideSlg56] = useState(0);
   const [currency, setCurrency] = useState<"USD" | "CAD">("USD");
+  const [isMachineModalOpen, setIsMachineModalOpen] = useState(false);
+  const [selectedMachineModel, setSelectedMachineModel] = useState("");
 
-
+  const openMachineModal = (model: string) => {
+    setSelectedMachineModel(model);
+    setIsMachineModalOpen(true);
+  };
+  const closeMachineModal = () => {
+    setIsMachineModalOpen(false);
+    setSelectedMachineModel("");
+  };
 
   useEffect(() => {
     const detectCurrencyByCountry = async () => {
@@ -273,12 +283,12 @@ export default function Home() {
             alt="DeSite Products logo"
             width={380}
             height={140}
-            className="h-auto w-56 md:w-80"
+            className="h-auto w-56 md:w-80 mx-auto"
             priority
           />
           <h1 className="mt-3 text-[clamp(0.95rem,4.2vw,3.75rem)] font-extrabold leading-tight">
-            <span className="block whitespace-nowrap">TOPSOIL / ROCK SCREENERS</span>
-            <span className="block whitespace-nowrap">BACKED BY 5 YEAR WARRANTY</span>
+            <span className="block whitespace-nowrap text-center">VIBRATORY SCREENERS</span>
+
           </h1>
         </div>
 
@@ -300,18 +310,19 @@ export default function Home() {
               </p>
 
               <p className="mt-3 text-center text-3xl font-extrabold tracking-tight text-[#082F72] md:text-4xl">
-                {currency === "CAD" ? "$21,500 CAD" : "$19,900 USD"}
+                {currency === "CAD" ? "$19,900 USD" : "$19,900 USD"}
               </p>
             </div>
 
             <ShippingQuoteButton model="108 ProScreen" />
-            <Link
-              href="/models/108-proscreen"
-              className="mt-3 flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC] mx-auto"
+            <button
+              type="button"
+              onClick={() => openMachineModal("108 ProScreen")}
+              className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
             >
               <span aria-hidden="true">→</span>
               WATCH IN ACTION
-            </Link>
+            </button>
           </article>
 
           <article className="rounded-3xl border border-[#2674F0] bg-gradient-to-b from-[#2674F0] to-[#082F72] p-6 text-white shadow-xl shadow-[#03122B]/40">
@@ -331,18 +342,19 @@ export default function Home() {
               </p>
 
               <p className="mt-3 text-center text-3xl font-extrabold tracking-tight text-white md:text-4xl">
-                {currency === "CAD" ? "$13,500 CAD" : "$13,900 USD"}
+                {currency === "CAD" ? "$13,900 USD" : "$13,900 USD"}
               </p>
             </div>
             <ShippingQuoteButton model="78 ProScreen" />
-            
-            <Link
-              href="/models/78-proscreen"
-              className="mt-3 flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC] mx-auto"
+
+            <button
+              type="button"
+              onClick={() => openMachineModal("78 ProScreen")}
+              className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
             >
               <span aria-hidden="true">→</span>
               WATCH IN ACTION
-            </Link>
+            </button>
           </article>
 
           <article className="rounded-3xl border border-white/15 bg-white p-6 text-[#03122B] shadow-xl shadow-black/20">
@@ -362,18 +374,31 @@ export default function Home() {
               </p>
 
               <p className="mt-3 text-center text-3xl font-extrabold tracking-tight text-[#082F72] md:text-4xl">
-                {currency === "CAD" ? "$8,500 CAD" : "$7,900 USD"}
+                {currency === "CAD" ? "$7,900 USD" : "$7,900 USD"}
               </p>
             </div>
             <ShippingQuoteButton model="68 ProScreen" />
-            <Link
-              href="/models/68-proscreen"
-              className="mt-3 flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC] mx-auto"
+            <button
+              type="button"
+              onClick={() => openMachineModal("68 ProScreen")}
+              className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
             >
               <span aria-hidden="true">→</span>
               WATCH IN ACTION
-            </Link>
+            </button>
           </article>
+
+
+        </section>
+        <div className="rounded-3xl border border-white/15 bg-white/8 p-8 backdrop-blur-sm md:p-12">
+
+          <h1 className="mt-3 text-[clamp(0.95rem,4.2vw,3.75rem)] font-extrabold leading-tight">
+            <span className="block whitespace-nowrap text-center">SPRING GRIZZLY SCREENERS</span>
+
+          </h1>
+        </div>
+        <section id="modelos" className="grid grid-cols-1 gap-6 md:grid-cols-3">
+
 
           <article className="rounded-3xl border border-white/15 bg-white p-6 text-[#03122B] shadow-xl shadow-black/20">
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#2674F0]">
@@ -392,17 +417,18 @@ export default function Home() {
               </p>
 
               <p className="mt-3 text-center text-3xl font-extrabold tracking-tight text-[#082F72] md:text-4xl">
-                {currency === "CAD" ? "$14,500 CAD" : "$14,900 USD"}
+                {currency === "CAD" ? "$14,900 USD" : "$14,900 USD"}
               </p>
             </div>
             <ShippingQuoteButton model="SLG 108" />
-            <Link
-              href="/models/slg-108"
-              className="mt-3 flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC] mx-auto"
+            <button
+              type="button"
+              onClick={() => openMachineModal("SLG 108")}
+              className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
             >
               <span aria-hidden="true">→</span>
               WATCH IN ACTION
-            </Link>
+            </button>
           </article>
 
           <article className="rounded-3xl border border-[#2674F0] bg-gradient-to-b from-[#2674F0] to-[#082F72] p-6 text-white shadow-xl shadow-[#03122B]/40">
@@ -422,17 +448,18 @@ export default function Home() {
               </p>
 
               <p className="mt-3 text-center text-3xl font-extrabold tracking-tight text-white md:text-4xl">
-                {currency === "CAD" ? "$8,500 CAD" : "$7,900 USD"}
+                {currency === "CAD" ? "$7,900 USD" : "$7,900 USD"}
               </p>
             </div>
             <ShippingQuoteButton model="SLG 78" />
-            <Link
-              href="/models/slg-78"
-              className="mt-3 flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC] mx-auto"
+            <button
+              type="button"
+              onClick={() => openMachineModal("SLG 78")}
+              className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
             >
               <span aria-hidden="true">→</span>
               WATCH IN ACTION
-            </Link>
+            </button>
           </article>
 
           <article className="rounded-3xl border border-white/15 bg-white p-6 text-[#03122B] shadow-xl shadow-black/20">
@@ -452,95 +479,132 @@ export default function Home() {
               </p>
 
               <p className="mt-3 text-center text-3xl font-extrabold tracking-tight text-[#082F72] md:text-4xl">
-                {currency === "CAD" ? "$4,700 CAD" : "$4,500 USD"}
+                {currency === "CAD" ? "$4,500 USD" : "$4,500 USD"}
               </p>
             </div>
             <ShippingQuoteButton model="SLG 56" />
-            <Link
-              href="/models/slg-56"
-              className="mt-3 flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC] mx-auto"
+            <button
+              type="button"
+              onClick={() => openMachineModal("SLG 56")}
+              className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
             >
               <span aria-hidden="true">→</span>
               WATCH IN ACTION
-            </Link>
+            </button>
           </article>
         </section>
- <section className="mx-auto mt-8 w-full max-w-5xl rounded-2xl border border-white/20 bg-white/5 p-5 md:p-6">
+        <section className="mx-auto mt-8 w-full max-w-5xl rounded-2xl border border-white/20 bg-white/5 p-5 md:p-6">
           <h2 className="text-center text-xl font-extrabold uppercase tracking-wide md:text-3xl">
             ABOUT MESH
           </h2>
 
-          <div className="mt-6 rounded-2xl border border-[#2674F0] overflow-hidden">
-            <h3 className="bg-[#2674F0] px-4 py-3 text-center text-2xl font-extrabold uppercase tracking-wide text-white">
-              SQUARE
-            </h3>
-            <table className="w-full text-center text-base text-white">
-              <thead className="bg-[#1B4FA8] text-white">
-                <tr>
-                  <th className="px-4 py-3 font-bold text-center">Mesh Size</th>
-                  <th className="px-4 py-3 font-bold text-center">Pattern</th>
-                  <th className="px-4 py-3 font-bold text-center">Product Size</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  ['5/32" x 5/32"', "Square", '1/16"'],
-                  ['1/4" x 1/4"', "Square", '1/8"'],
-                  ['3/8" x 3/8"', "Square", '1/4"'],
-                  ['1/2" x 1/2"', "Square", '3/8"'],
-                  ['1" x 1"', "Square", '3/4"'],
-                  ['2" x 2"', "Square", '1-1/2"'],
-                  ['3" x 3"', "Square", '2"'],
-                  ['4" x 4"', "Square", '3"'],
-                ].map((row, index) => (
-                  <tr
-                    key={`square-${row[0]}`}
-                    className={index % 2 === 0 ? "bg-[#102B59]" : "bg-[#0B234A]"}
-                  >
-                    <td className="px-4 py-3 text-center">{row[0]}</td>
-                    <td className="px-4 py-3 text-center">{row[1]}</td>
-                    <td className="px-4 py-3 text-center">{row[2]}</td>
+          {/* SQUARE */}
+          <div className="mt-6 grid grid-cols-1 overflow-hidden rounded-2xl border border-[#2674F0] md:grid-cols-2">
+
+            {/* IMAGE */}
+            <div className="flex items-center justify-center bg-[#0B234A] p-6">
+              <Image
+                src="/shared/square.webp"
+                alt="Square mesh"
+                width={500}
+                height={500}
+                className="h-auto max-h-[350px] w-full object-contain"
+              />
+            </div>
+
+            {/* TABLE */}
+            <div>
+              <h3 className="bg-[#2674F0] px-4 py-3 text-center text-2xl font-extrabold uppercase tracking-wide text-white">
+                SQUARE
+              </h3>
+
+              <table className="w-full text-center text-sm text-white md:text-base">
+                <thead className="bg-[#1B4FA8] text-white">
+                  <tr>
+                    <th className="px-3 py-3 font-bold">Mesh Size</th>
+
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+
+                <tbody>
+                  {[
+                    ['5/32" x 5/32"'],
+                    ['1/4" x 1/4"'],
+                    ['3/8" x 3/8"'],
+                    ['1/2" x 1/2"'],
+                    ['1" x 1"'],
+                    ['2" x 2"'],
+                    ['3" x 3"'],
+                    ['4" x 4"'],
+                  ].map((row, index) => (
+                    <tr
+                      key={`square-${row[0]}`}
+                      className={
+                        index % 2 === 0 ? "bg-[#102B59]" : "bg-[#0B234A]"
+                      }
+                    >
+                      <td className="px-3 py-2.5">{row[0]}</td>
+
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
 
-          <div className="mt-6 rounded-2xl border border-[#2674F0] overflow-hidden">
-            <h3 className="bg-[#2674F0] px-4 py-3 text-center text-2xl font-extrabold uppercase tracking-wide text-white">
-              ELONGATED
-            </h3>
-            <table className="w-full text-center text-base text-white">
-              <thead className="bg-[#1B4FA8] text-white">
-                <tr>
-                  <th className="px-4 py-3 font-bold text-center">Mesh Size</th>
-                  <th className="px-4 py-3 font-bold text-center">Pattern</th>
-                  <th className="px-4 py-3 font-bold text-center">Product Size</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  ['3/8" x 4"', "Elongated", '1/4" to 5/16"'],
-                  ['1/2" x 4"', "Elongated", '3/8" to 7/16"'],
-                  ['3/4" x 4"', "Elongated", '1/2" to 9/16"'],
-                  ['1" x 4"', "Elongated", '3/4" to 7/8"'],
-                ].map((row, index) => (
-                  <tr
-                    key={`elongated-${row[0]}`}
-                    className={index % 2 === 0 ? "bg-[#102B59]" : "bg-[#0B234A]"}
-                  >
-                    <td className="px-4 py-3 text-center">{row[0]}</td>
-                    <td className="px-4 py-3 text-center">{row[1]}</td>
-                    <td className="px-4 py-3 text-center">{row[2]}</td>
+          {/* ELONGATED */}
+          <div className="mt-6 grid grid-cols-1 overflow-hidden rounded-2xl border border-[#2674F0] md:grid-cols-2">
+
+            {/* IMAGE */}
+            <div className="flex items-center justify-center bg-[#0B234A] p-6">
+              <Image
+                src="/shared/enlongated.webp"
+                alt="Elongated mesh"
+                width={500}
+                height={500}
+                className="h-auto max-h-[350px] w-full object-contain"
+              />
+            </div>
+
+            {/* TABLE */}
+            <div>
+              <h3 className="bg-[#2674F0] px-4 py-3 text-center text-2xl font-extrabold uppercase tracking-wide text-white">
+                ELONGATED
+              </h3>
+
+              <table className="w-full text-center text-sm text-white md:text-base">
+                <thead className="bg-[#1B4FA8] text-white">
+                  <tr>
+                    <th className="px-3 py-3 font-bold">Mesh Size</th>
+                    
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+
+                <tbody>
+                  {[
+                    ['3/8" x 4"'],
+                    ['1/2" x 4"'],
+                    ['3/4" x 4"'],
+                    ['1" x 4"'],
+                  ].map((row, index) => (
+                    <tr
+                      key={`elongated-${row[0]}`}
+                      className={
+                        index % 2 === 0 ? "bg-[#102B59]" : "bg-[#0B234A]"
+                      }
+                    >
+                      <td className="px-3 py-2.5">{row[0]}</td>
+                    
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </section>
-       <Suspense fallback={null}>
-         <ShippingQuoteSection />
-       </Suspense>
+        <Suspense fallback={null}>
+          <ShippingQuoteSection />
+        </Suspense>
 
         <section
           id="contacto"
@@ -562,6 +626,11 @@ export default function Home() {
           </a>
         </section>
       </section>
+      <MachineModelModal
+        isOpen={isMachineModalOpen}
+        onClose={closeMachineModal}
+        model={selectedMachineModel}
+      />
     </main>
   );
 }

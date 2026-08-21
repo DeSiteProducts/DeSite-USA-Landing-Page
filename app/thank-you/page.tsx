@@ -24,6 +24,7 @@ type ThankYouPageProps = {
     financing?: string;
     value?: string;
     currency?: string;
+    discountCode?: string;
   }>;
 };
 
@@ -43,7 +44,9 @@ export default async function ThankYouPage({ searchParams }: ThankYouPageProps) 
     financing: params?.financing ?? "",
     value: Number.isFinite(value) ? value : 0,
     currency,
+    
   };
+  const discountCode = params?.discountCode ?? "";
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-[#03122B] via-[#073073] to-[#082F72] px-6 py-12 text-white md:px-12 flex items-center">
@@ -63,8 +66,22 @@ export default async function ThankYouPage({ searchParams }: ThankYouPageProps) 
           Thank You
         </p>
         <h1 className="mt-3 text-3xl font-extrabold leading-tight md:text-4xl">
-          Thank you for requesting a shipping quote.
+          Thank you for requesting a discount code.
         </h1>
+        {discountCode && (
+          <div className="mt-6 rounded-2xl border-2 border-[#2674F0] bg-white p-6 text-center">
+            <p className="text-sm font-bold uppercase tracking-wider text-[#536177]">
+              Your discount code
+            </p>
+
+            <p className="mt-2 text-3xl font-extrabold tracking-[0.2em] text-[#2674F0]">
+              {discountCode}
+            </p>
+            <p className="text-sm font-bold uppercase tracking-wider text-[#536177]">
+              Save your discount code it’s valid for the next 30 days!
+            </p>
+          </div>
+        )}
         {leadData.requiresReview ? (
           <>
             <p className="mt-4 text-[#E0E3E8]">

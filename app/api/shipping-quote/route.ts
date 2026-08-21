@@ -13,7 +13,18 @@ import {
   isVibrationNeeded,
 } from "../../shipping-quote/quote-flow";
 
+function generateDiscountCode(length = 6): string {
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
+  const randomValues = new Uint32Array(length);
+  crypto.getRandomValues(randomValues);
+
+  return Array.from(
+    randomValues,
+    (value) => characters[value % characters.length]
+  ).join("");
+}
 
 function toStringValue(value: FormDataEntryValue | null): string {
   return typeof value === "string" ? value.trim() : "";
@@ -81,6 +92,7 @@ export async function POST(request: Request) {
     const country = toStringValue(formData.get("country"));
     const financing = toStringValue(formData.get("financing"));
     const consent = toStringValue(formData.get("consent"));
+    const discountCode = generateDiscountCode(6);
 
     if (
       !isVibrationNeeded(vibrationNeeded) ||
@@ -111,6 +123,7 @@ export async function POST(request: Request) {
         countryValid: isCountryOption(country),
         financingValid: isFinancingOption(financing),
         consentAccepted: consent === "accepted",
+     
       });
       return redirectAfterPost(request, "/shipping-quote", "error");
     }
@@ -143,6 +156,7 @@ export async function POST(request: Request) {
         country,
         financing,
         consent,
+        discountCode
       }),
     });
 
@@ -163,6 +177,7 @@ export async function POST(request: Request) {
       financing,
       value: leadPricing.value,
       currency: leadPricing.currency,
+      discountCode,
     });
   } catch (error) {
     console.error("[shipping-quote] Failed to send quote request email", error);

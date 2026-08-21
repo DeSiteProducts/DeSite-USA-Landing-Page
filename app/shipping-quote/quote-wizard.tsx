@@ -183,7 +183,7 @@ export default function QuoteWizard({ initialModel, isError }: QuoteWizardProps)
     <>
       <div className="w-full p-2">
         <p className="mt-4 mb-4 text-md sm:text-xl font-semibold text-center text-[#D8E3F4]">
-          <b>{100 - progressPercent}</b>% LEFT TO UNLOCK YOUR DISCOUNT
+          <b>{100 - progressPercent}</b>% LEFT TO UNLOCK YOUR DISCOUNT CODE
         </p>
         <div className="flex items-center gap-2">
           {Array.from({ length: totalSteps }).map((_, index) => {
@@ -203,7 +203,7 @@ export default function QuoteWizard({ initialModel, isError }: QuoteWizardProps)
 
         
       </div>
-      <main className="flex min-h-screen   px-2 py-2 text-[#03122B] sm:px-2 md:px-2">
+      <main className="flex px-2 py-2 text-[#03122B] sm:px-2 md:px-2">
 
         <section className="mx-auto grid w-full max-w-5xl overflow-hidden rounded-lg border border-white/20 bg-[#F8FBFF] shadow-2xl md:min-h-[640px] md:grid-cols-[0.9fr_1.35fr]">
 
@@ -213,7 +213,7 @@ export default function QuoteWizard({ initialModel, isError }: QuoteWizardProps)
                 DeSite Products
               </p>
               <h1 className="mt-4 text-3xl font-extrabold leading-tight md:text-4xl">
-                GET YOUR DISCOUNT
+                GET YOUR DISCOUNT CODE
               </h1>
               <p className="mt-4 text-md leading-6 text-[#D8E3F4]">
                 Answer one question at a time and we will recommend the best screener
