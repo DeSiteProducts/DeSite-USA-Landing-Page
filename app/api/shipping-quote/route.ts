@@ -123,7 +123,7 @@ export async function POST(request: Request) {
       ? [`Recommendation Note: ${recommendation.note}`]
       : [];
     const response = await fetch(
-    "https://7ss8boyq53.execute-api.us-east-1.amazonaws.com/default/sendQuoteEmail",
+    "",
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },
