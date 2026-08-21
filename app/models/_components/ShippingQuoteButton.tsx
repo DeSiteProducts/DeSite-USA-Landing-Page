@@ -12,7 +12,14 @@ export default function ShippingQuoteButton({
   const router = useRouter();
 
   const handleClick = () => {
-    router.push(`?model=${encodeURIComponent(model)}#shipping-quote`);
+    router.push(`?model=${encodeURIComponent(model)}#shipping-quote`, {
+      scroll: false,
+    });
+
+    document.getElementById("shipping-quote")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
   };
 
   return (
