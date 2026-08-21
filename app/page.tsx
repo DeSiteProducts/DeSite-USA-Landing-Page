@@ -7,6 +7,7 @@ import VimeoSlider from "./models/_components/VimeoSlider";
 import ShippingQuoteButton from "./models/_components/ShippingQuoteButton";
 import ShippingQuoteSection from "./models/_components/ShippingQuoteSection";
 import MachineModelModal from "./models/_components/modalProductPage";
+import ImageSlider from "./models/_components/ImageSlider";
 
 const sliderVideos108 = [
   {
@@ -220,8 +221,34 @@ const sliderVideosSlg56 = [
   }
 ];
 
+const sliderImages108 = [
+  "/108/icons/1.webp",
+  "/108/icons/2.webp",
+  "/108/icons/3.webp",
+  "/108/icons/4.webp",
+  "/108/icons/5.webp",
+  "/108/icons/6.webp",
+];
 
+const sliderImages78 = [
+  "/78/icons/78Pro1.webp",
+  "/78/icons/78Pro2.webp",
+  "/78/icons/78Pro3.webp",
+  "/78/icons/78Pro4.webp",
+ 
+];
 
+const sliderImages68 = [
+  "/78/icons/78Pro1.webp",
+  "/78/icons/78Pro2.webp",
+  "/78/icons/78Pro4.webp",
+];
+
+const sliderImages56 = [
+  "/SLG-56/icons/56SLG1.webp",
+  "/SLG-56/icons/56SLG2.webp",
+  "/SLG-56/icons/56SLG3.webp",
+];
 export default function Home() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [activeSlide78, setActiveSlide78] = useState(0);
@@ -308,6 +335,10 @@ export default function Home() {
               <p className="mt-4 text-center text-xs font-bold uppercase tracking-[0.14em] text-[#082F72]">
                 DESIGNED FOR FULL SIZED EQUIPMENT
               </p>
+              <ImageSlider
+                images={sliderImages108}
+                alt="108 ProScreen"
+              />
 
               <p className="mt-3 text-center text-3xl font-extrabold tracking-tight text-[#082F72] md:text-4xl">
                 {currency === "CAD" ? "$19,900 USD" : "$19,900 USD"}
@@ -340,6 +371,10 @@ export default function Home() {
               <p className="mt-4 text-center text-xs font-bold uppercase tracking-[0.14em] text-[#E0E3E8]">
                 DESIGNED FOR MID SIZE EQUIPMENT
               </p>
+               <ImageSlider
+                images={sliderImages78}
+                alt="78 ProScreen"
+              />
 
               <p className="mt-3 text-center text-3xl font-extrabold tracking-tight text-white md:text-4xl">
                 {currency === "CAD" ? "$13,900 USD" : "$13,900 USD"}
@@ -372,6 +407,10 @@ export default function Home() {
               <p className="mt-4 text-center text-xs font-bold uppercase tracking-[0.14em] text-[#082F72]">
                 DESIGNED FOR MINI SIZED EQUIPMENT
               </p>
+               <ImageSlider
+                images={sliderImages68}
+                alt="68 ProScreen"
+              />
 
               <p className="mt-3 text-center text-3xl font-extrabold tracking-tight text-[#082F72] md:text-4xl">
                 {currency === "CAD" ? "$7,900 USD" : "$7,900 USD"}
@@ -415,6 +454,10 @@ export default function Home() {
               <p className="mt-4 text-center text-xs font-bold uppercase tracking-[0.14em] text-[#082F72]">
                 DESIGNED FOR FULL SIZED EQUIPMENT
               </p>
+              <ImageSlider
+                images={sliderImages108}
+                alt="SLG 108"
+              />
 
               <p className="mt-3 text-center text-3xl font-extrabold tracking-tight text-[#082F72] md:text-4xl">
                 {currency === "CAD" ? "$14,900 USD" : "$14,900 USD"}
@@ -446,6 +489,10 @@ export default function Home() {
               <p className="mt-4 text-center text-xs font-bold uppercase tracking-[0.14em] text-[#E0E3E8]">
                 DESIGNED FOR MID SIZE EQUIPMENT
               </p>
+              <ImageSlider
+                images={sliderImages78}
+                alt="SLG 78 "
+              />
 
               <p className="mt-3 text-center text-3xl font-extrabold tracking-tight text-white md:text-4xl">
                 {currency === "CAD" ? "$7,900 USD" : "$7,900 USD"}
@@ -477,6 +524,10 @@ export default function Home() {
               <p className="mt-4 text-center text-xs font-bold uppercase tracking-[0.14em] text-[#082F72]">
                 DESIGNED FOR COMPACT EQUIPMENT
               </p>
+               <ImageSlider
+                images={sliderImages56}
+                alt="SLG 56 "
+              />
 
               <p className="mt-3 text-center text-3xl font-extrabold tracking-tight text-[#082F72] md:text-4xl">
                 {currency === "CAD" ? "$4,500 USD" : "$4,500 USD"}
@@ -576,7 +627,7 @@ export default function Home() {
                 <thead className="bg-[#1B4FA8] text-white">
                   <tr>
                     <th className="px-3 py-3 font-bold">Mesh Size</th>
-                    
+
                   </tr>
                 </thead>
 
@@ -594,7 +645,7 @@ export default function Home() {
                       }
                     >
                       <td className="px-3 py-2.5">{row[0]}</td>
-                    
+
                     </tr>
                   ))}
                 </tbody>
