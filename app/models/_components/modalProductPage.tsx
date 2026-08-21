@@ -350,12 +350,6 @@ export default function MachineModelModal({
         };
     }, []);
 
-    // Reiniciar la galería cuando cambia el modelo
-    useEffect(() => {
-        setActiveImageGroup(0);
-        setSelectedImage(null);
-    }, [model]);
-
     // Cerrar con Escape
     useEffect(() => {
         if (!isOpen) return;
@@ -495,6 +489,7 @@ export default function MachineModelModal({
                                             alt={image.alt}
                                             fill
                                             sizes="(max-width: 767px) 100vw, 25vw"
+                                            quality={65}
                                             className="object-cover transition duration-300 group-hover:scale-105"
                                         />
 
@@ -566,7 +561,8 @@ export default function MachineModelModal({
                             src={machine.images[selectedImage].src}
                             alt={machine.images[selectedImage].alt}
                             fill
-                            sizes="100vw"
+                            sizes="(max-width: 1200px) 100vw, 1200px"
+                            quality={65}
                             className="object-contain"
                             priority
                         />

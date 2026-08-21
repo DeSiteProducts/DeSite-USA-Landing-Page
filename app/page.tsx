@@ -659,6 +659,7 @@ export default function Home() {
         </section>
       </section>
       <MachineModelModal
+        key={selectedMachineModel}
         isOpen={isMachineModalOpen}
         onClose={closeMachineModal}
         model={selectedMachineModel}
