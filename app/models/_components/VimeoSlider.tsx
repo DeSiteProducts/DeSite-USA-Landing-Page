@@ -1,0 +1,163 @@
+"use client";
+
+import type React from "react";
+
+const MAX_VISIBLE_DOTS = 12;
+
+type VideoSlide = {
+  url: string;
+  title: string;
+};
+
+type VimeoSliderProps = {
+  videos: VideoSlide[];
+  activeSlide: number;
+  setActiveSlide: React.Dispatch<React.SetStateAction<number>>;
+  dark?: boolean;
+};
+
+function getDotCount(totalSlides: number): number {
+  return Math.max(1, Math.min(MAX_VISIBLE_DOTS, totalSlides));
+}
+
+function getDotSlideIndex(
+  dotIndex: number,
+  totalSlides: number,
+  dotCount: number
+): number {
+  if (totalSlides <= 1 || dotCount <= 1) {
+    return 0;
+  }
+
+  return Math.round(
+    (dotIndex * (totalSlides - 1)) / (dotCount - 1)
+  );
+}
+
+function getActiveDotIndex(
+  activeSlideIndex: number,
+  totalSlides: number,
+  dotCount: number
+): number {
+  if (totalSlides <= 1 || dotCount <= 1) {
+    return 0;
+  }
+
+  return Math.round(
+    (activeSlideIndex * (dotCount - 1)) / (totalSlides - 1)
+  );
+}
+
+export default function VimeoSlider({
+  videos,
+  activeSlide,
+  setActiveSlide,
+  dark = false,
+}: VimeoSliderProps) {
+  const totalSlides = videos.length;
+
+  const dotCount = getDotCount(totalSlides);
+
+  const activeDot = getActiveDotIndex(
+    activeSlide,
+    totalSlides,
+    dotCount
+  );
+
+  const showPrevious = () => {
+    setActiveSlide(
+      (current) =>
+        (current - 1 + totalSlides) % totalSlides
+    );
+  };
+
+  const showNext = () => {
+    setActiveSlide(
+      (current) => (current + 1) % totalSlides
+    );
+  };
+
+  const currentVideo = videos[activeSlide];
+
+  if (!currentVideo) {
+    return null;
+  }
+
+  return (
+    <div>
+      {/* Video */}
+      <div
+        className={`relative overflow-hidden rounded-2xl border ${
+          dark
+            ? "border-white/30 bg-[#03122B]/20"
+            : "border-[#E0E3E8] bg-[#03122B]/5"
+        }`}
+      >
+        <div className="aspect-video w-full">
+          <iframe
+            key={currentVideo.url}
+            src={`${currentVideo.url}?autoplay=0&title=0&byline=0&portrait=0`}
+            title={currentVideo.title}
+            className="h-full w-full"
+            loading="lazy"
+            allow="fullscreen; picture-in-picture"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          />
+        </div>
+
+        {/* Previous */}
+        <button
+          type="button"
+          aria-label="Previous video"
+          onClick={showPrevious}
+          className="absolute left-3 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-lg text-[#082F72] shadow transition hover:bg-white"
+        >
+          ‹
+        </button>
+
+        {/* Next */}
+        <button
+          type="button"
+          aria-label="Next video"
+          onClick={showNext}
+          className="absolute right-3 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-lg text-[#082F72] shadow transition hover:bg-white"
+        >
+          ›
+        </button>
+        
+      
+      </div>
+
+
+      {/* Dots */}
+      <div className="mt-3 flex items-center justify-center gap-2">
+        {Array.from({ length: dotCount }).map((_, index) => (
+          <button
+            key={index}
+            type="button"
+            aria-label={`Go to video ${index + 1}`}
+            onClick={() =>
+              setActiveSlide(
+                getDotSlideIndex(
+                  index,
+                  totalSlides,
+                  dotCount
+                )
+              )
+            }
+            className={`h-2 rounded-full transition ${
+              activeDot === index
+                ? dark
+                  ? "w-6 bg-white"
+                  : "w-6 bg-[#2674F0]"
+                : dark
+                  ? "w-2 bg-white/55 hover:bg-white/80"
+                  : "w-2 bg-[#7892B1]/60 hover:bg-[#7892B1]"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
