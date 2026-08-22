@@ -1,12 +1,14 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
-type images = {
-  src: string;
-  alt: string;
+type Video = {
+  title: string;
+  embedUrl: string;
+  description?: string;
 };
 
 type EquipmentIcon = {
@@ -37,7 +39,8 @@ type ModelDetailPageProps = {
   subtitle: string;
   description?: string;
   quoteModel: string;
-  images: images[];
+  videos: Video[];
+  featureVideos: Video[];
   equipmentIcons: EquipmentIcon[];
   designedFor: string;
   specs: SpecSection[];
@@ -126,10 +129,13 @@ export default function ModelDetailPage({
   title,
   subtitle,
   description,
-  images,
+  quoteModel,
+  videos,
+  featureVideos,
   equipmentIcons,
   designedFor,
   specs,
+  galleryImages = [],
   warrantyCards = [
     { title: "5 Year Structural Warranty", icon: "shield" },
     { title: "1 Year Electrical Warranty", icon: "bolt" },
@@ -137,49 +143,19 @@ export default function ModelDetailPage({
   showFeatures = true,
 }: ModelDetailPageProps) {
   const router = useRouter();
-
+  const [activeVideo, setActiveVideo] = useState(0);
+  const [activeGalleryImage, setActiveGalleryImage] = useState(0);
+  const [activeFeatureVideo, setActiveFeatureVideo] = useState(0);
   const [activeEquipment, setActiveEquipment] = useState(0);
-  const [activeImageGroup, setActiveImageGroup] = useState(0);
-  const [selectedImage, setSelectedImage] = useState<number | null>(null);
-  const [isMobile, setIsMobile] = useState(false);
 
-
-  useEffect(() => {
-    const checkScreenSize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    checkScreenSize();
-
-    window.addEventListener("resize", checkScreenSize);
-
-    return () => {
-      window.removeEventListener("resize", checkScreenSize);
-    };
-  }, []);
-
-  const imagesPerSlide = isMobile ? 1 : 4;
-
-  const totalImageGroups = Math.ceil(images.length / imagesPerSlide);
-
-  const visibleImages = images.slice(
-    activeImageGroup * imagesPerSlide,
-    activeImageGroup * imagesPerSlide + imagesPerSlide
+  const iframeSrc = useMemo(
+    () => appendPlayerParams(videos[activeVideo].embedUrl),
+    [activeVideo, videos]
   );
-
-  const goToPreviousImages = () => {
-    setActiveImageGroup(
-      (current) =>
-        (current - 1 + totalImageGroups) % totalImageGroups
-    );
-  };
-
-  const goToNextImages = () => {
-    setActiveImageGroup(
-      (current) => (current + 1) % totalImageGroups
-    );
-  };
-
+  const featureIframeSrc = useMemo(
+    () => appendPlayerParams(featureVideos[activeFeatureVideo].embedUrl),
+    [activeFeatureVideo, featureVideos]
+  );
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -189,14 +165,26 @@ export default function ModelDetailPage({
     return () => clearInterval(timer);
   }, [equipmentIcons.length]);
 
+  useEffect(() => {
+    if (galleryImages.length <= 1) {
+      return;
+    }
 
+    const timer = setInterval(() => {
+      setActiveGalleryImage((current) => (current + 1) % galleryImages.length);
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, [galleryImages.length]);
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-[#03122B] via-[#073073] to-[#082F72] px-6 py-12 text-white md:px-12">
       <section className="mx-auto w-full max-w-6xl rounded-3xl border border-white/20 bg-white/10 p-6 shadow-2xl backdrop-blur-sm md:p-10">
         <button
           type="button"
-          onClick={() => router.back()}
+          onClick={() => {
+            window.location.href = process.env.NEXT_PUBLIC_SITE_URL ?? "/";
+          }}
           className="inline-flex rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-[#082F72] transition hover:bg-white"
         >
           ← Back
@@ -214,62 +202,110 @@ export default function ModelDetailPage({
           </p>
         ) : null}
 
-        <div className="mx-auto mt-8 w-full max-w-6xl">
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
-            {visibleImages.map((image, index) => {
-              const realIndex =
-                activeImageGroup * imagesPerSlide + index;
+        <div className="mx-auto mt-8 w-full max-w-3xl overflow-hidden rounded-2xl border border-white/25 bg-black">
+          <div className="relative w-full pt-[56.25%]">
+            <iframe
+              key={iframeSrc}
+              src={iframeSrc}
+              title={videos[activeVideo].title}
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+              className="absolute inset-0 h-full w-full"
+            />
+          </div>
+        </div>
 
-              return (
+        <div className="mt-4 flex items-center justify-between gap-3">
+          <button
+            type="button"
+            onClick={() =>
+              setActiveVideo((current) => (current - 1 + videos.length) % videos.length)
+            }
+            className="rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-[#082F72] transition hover:bg-white"
+          >
+            Previous
+          </button>
+          <p className="text-center text-sm font-semibold text-[#E0E3E8]">
+            {activeVideo + 1} / {videos.length}
+          </p>
+          <button
+            type="button"
+            onClick={() => setActiveVideo((current) => (current + 1) % videos.length)}
+            className="rounded-full bg-[#2674F0] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#5693F3]"
+          >
+            Next
+          </button>
+        </div>
+        <Link
+          href={`${process.env.NEXT_PUBLIC_SITE_URL}/?model=${encodeURIComponent(
+            quoteModel
+          )}#shipping-quote`}
+          className="mx-auto mt-5 block w-fit rounded-full bg-[#2674F0] px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-[#5693F3]"
+        >
+          CLICK HERE FOR A SHIPPING QUOTE
+        </Link>
+
+        {galleryImages.length > 0 ? (
+          <section className="mx-auto mt-8 w-full max-w-4xl rounded-2xl border border-white/20 bg-white/5 p-5 md:p-6">
+            <h2 className="text-center text-lg font-extrabold uppercase tracking-wide md:text-2xl">
+              PHOTOS
+            </h2>
+            <div className="mx-auto mt-5 w-full max-w-3xl overflow-hidden rounded-2xl border border-white/25 bg-[#03122B]/40">
+              <div className="relative">
+                <Image
+                  src={galleryImages[activeGalleryImage].src}
+                  alt={galleryImages[activeGalleryImage].alt}
+                  width={1200}
+                  height={800}
+                  className="aspect-video w-full object-cover"
+                  sizes="(max-width: 768px) 100vw, 768px"
+                  quality={75}
+                />
+                <button
+                  type="button"
+                  aria-label="Previous photo"
+                  onClick={() =>
+                    setActiveGalleryImage(
+                      (current) =>
+                        (current - 1 + galleryImages.length) % galleryImages.length
+                    )
+                  }
+                  className="absolute left-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-lg text-[#082F72] shadow transition hover:bg-white"
+                >
+                  ‹
+                </button>
+                <button
+                  type="button"
+                  aria-label="Next photo"
+                  onClick={() =>
+                    setActiveGalleryImage(
+                      (current) => (current + 1) % galleryImages.length
+                    )
+                  }
+                  className="absolute right-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-lg text-[#082F72] shadow transition hover:bg-white"
+                >
+                  ›
+                </button>
+              </div>
+            </div>
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
+              {galleryImages.map((image, index) => (
                 <button
                   key={image.src}
                   type="button"
-                  onClick={() => setSelectedImage(realIndex)}
-                  className="group relative aspect-square overflow-hidden rounded-2xl border border-white/25 bg-black"
-                  aria-label={`Open ${image.alt}`}
-                >
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    fill
-                    sizes="(max-width: 767px) 100vw, 25vw"
-                    className="object-cover transition duration-300 group-hover:scale-105"
-                  />
-
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition group-hover:bg-black/30">
-                    <span className="rounded-full bg-black/60 px-4 py-2 text-sm font-bold text-white opacity-0 transition group-hover:opacity-100">
-                      🔍 Zoom
-                    </span>
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-
-          <div className="mt-5 flex items-center justify-center gap-6">
-            <button
-              type="button"
-              onClick={goToPreviousImages}
-              className="flex h-11 w-11 items-center justify-center rounded-full bg-white/90 text-2xl font-bold text-[#082F72] transition hover:scale-105 hover:bg-white"
-              aria-label="Previous images"
-            >
-              &lt;
-            </button>
-
-            <p className="min-w-16 text-center text-sm font-semibold text-[#E0E3E8]">
-              {activeImageGroup + 1} / {totalImageGroups}
-            </p>
-
-            <button
-              type="button"
-              onClick={goToNextImages}
-              className="flex h-11 w-11 items-center justify-center rounded-full bg-[#2674F0] text-2xl font-bold text-white transition hover:scale-105 hover:bg-[#5693F3]"
-              aria-label="Next images"
-            >
-              &gt;
-            </button>
-          </div>
-        </div>
+                  aria-label={`View photo ${index + 1}`}
+                  onClick={() => setActiveGalleryImage(index)}
+                  className={`h-2 rounded-full transition ${activeGalleryImage === index
+                      ? "w-6 bg-white"
+                      : "w-2 bg-white/55 hover:bg-white/80"
+                    }`}
+                />
+              ))}
+            </div>
+          </section>
+        ) : null}
 
         <section className="mx-auto mt-10 w-full max-w-4xl rounded-2xl border border-white/20 bg-white/5 p-5 md:p-6">
           <h2 className="text-center text-lg font-extrabold uppercase tracking-wide md:text-2xl">
@@ -316,7 +352,71 @@ export default function ModelDetailPage({
           </div>
         </section>
 
+        {showFeatures ? (
+          <section className="mx-auto mt-8 w-full max-w-4xl rounded-2xl border border-white/20 bg-white/5 p-5 md:p-6">
+            <h2 className="text-center text-lg font-extrabold uppercase tracking-wide md:text-2xl">
+              FEATURES
+            </h2>
+            <p className="mt-2 text-center text-sm font-semibold tracking-wide text-[#E0E3E8]">
+              {featureVideos[activeFeatureVideo].title}
+            </p>
+            {featureVideos[activeFeatureVideo].description ? (
+              <p className="mx-auto mt-3 max-w-3xl text-center text-sm text-[#E0E3E8]">
+                {featureVideos[activeFeatureVideo].description}
+              </p>
+            ) : null}
 
+            <div className="mx-auto mt-4 w-full max-w-3xl overflow-hidden rounded-2xl border border-white/25 bg-black">
+              <div className="relative w-full pt-[56.25%]">
+                <iframe
+                  key={featureIframeSrc}
+                  src={featureIframeSrc}
+                  title={featureVideos[activeFeatureVideo].title}
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                  loading="lazy"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                  className="absolute inset-0 h-full w-full"
+                />
+              </div>
+            </div>
+
+            <div className="mt-4 flex items-center justify-between gap-3">
+              <button
+                type="button"
+                onClick={() =>
+                  setActiveFeatureVideo(
+                    (current) =>
+                      (current - 1 + featureVideos.length) % featureVideos.length
+                  )
+                }
+                className="rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-[#082F72] transition hover:bg-white"
+              >
+                Previous
+              </button>
+              <p className="text-center text-sm font-semibold text-[#E0E3E8]">
+                {activeFeatureVideo + 1} / {featureVideos.length}
+              </p>
+              <button
+                type="button"
+                onClick={() =>
+                  setActiveFeatureVideo((current) => (current + 1) % featureVideos.length)
+                }
+                className="rounded-full bg-[#2674F0] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#5693F3]"
+              >
+                Next
+              </button>
+            </div>
+            <Link
+              href={`${process.env.NEXT_PUBLIC_SITE_URL}/?model=${encodeURIComponent(
+                quoteModel
+              )}#shipping-quote`}
+              className="mx-auto mt-5 block w-fit rounded-full bg-[#2674F0] px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-[#5693F3]"
+            >
+              CLICK HERE FOR A SHIPPING QUOTE
+            </Link>
+          </section>
+        ) : null}
 
         <section className="mx-auto mt-8 w-full max-w-4xl rounded-2xl border border-white/20 bg-white/5 p-5 md:p-6">
           <h2 className="text-center text-lg font-extrabold uppercase tracking-wide md:text-2xl">
@@ -380,36 +480,14 @@ export default function ModelDetailPage({
           </div>
         </section>
 
-
+        <section className="mx-auto mt-8 w-full max-w-5xl rounded-2xl border border-white/20 bg-white/5 p-5 md:p-6">
+          <h2 className="text-center text-xl font-extrabold uppercase tracking-wide md:text-3xl">
+            MESH AVAILABLE
+          </h2>
+          <MeshTable title="SQUARE" rows={meshRows.square} />
+          <MeshTable title="ELONGATED" rows={meshRows.elongated} />
+        </section>
       </section>
-      {selectedImage !== null && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 p-4"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Image preview"
-        >
-          <button
-            type="button"
-            onClick={() => setSelectedImage(null)}
-            className="absolute right-5 top-5 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white text-2xl font-bold text-black transition hover:scale-105"
-            aria-label="Close image"
-          >
-            ×
-          </button>
-
-          <div className="relative h-full w-full max-w-6xl">
-            <Image
-              src={images[selectedImage].src}
-              alt={images[selectedImage].alt}
-              fill
-              sizes="100vw"
-              className="object-contain"
-              priority
-            />
-          </div>
-        </div>
-      )}
     </main>
   );
 }

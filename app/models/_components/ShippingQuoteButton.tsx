@@ -26,7 +26,7 @@ export default function ShippingQuoteButton({
     <button
       type="button"
       onClick={handleClick}
-      className="mt-8 block w-fit rounded-full bg-[#2674F0] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#082F72] mx-auto"
+      className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
     >
       CLICK HERE FOR A DISCOUNT CODE
     </button>

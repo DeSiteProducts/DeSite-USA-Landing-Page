@@ -28,13 +28,13 @@ export default function ImageSlider({
   if (!images.length) return null;
 
   return (
-    <div className="relative mt-4 aspect-square w-full overflow-hidden rounded-2xl">
+    <div className="relative mx-auto h-[200px] w-full max-w-[200px] overflow-hidden rounded-2xl">
       {images.map((image, index) => (
         <img
           key={image}
           src={image}
           alt={`${alt} ${index + 1}`}
-          className={`absolute inset-0 h-300px w-300px object-cover transition-opacity duration-700 ${
+          className={`absolute inset-0 m-auto h-full w-full object-contain transition-opacity duration-700 ${
             index === activeImage ? "opacity-100" : "opacity-0"
           }`}
         />

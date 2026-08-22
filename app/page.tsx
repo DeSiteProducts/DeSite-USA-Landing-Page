@@ -2,11 +2,13 @@
 
 import Image from "next/image";
 import dynamic from "next/dynamic";
-import { useState } from "react";
+import {  useState } from "react";
 import VimeoSlider from "./models/_components/VimeoSlider";
 import ShippingQuoteButton from "./models/_components/ShippingQuoteButton";
 import DeferredShippingQuoteSection from "./models/_components/DeferredShippingQuoteSection";
 import ImageSlider from "./models/_components/ImageSlider";
+import Link from "next/link";
+
 
 const MachineModelModal = dynamic(
   () => import("./models/_components/modalProductPage"),
@@ -117,15 +119,15 @@ const sliderVideos78 = [
 ];
 
 const sliderVideos68 = [
-
-  {
-    title: "68 Pro Screen Full Overview",
-    url: "https://player.vimeo.com/video/1079537676?h=21b032376a",
-  },
   {
     title: "68 Pro Screen Overview",
     url: "https://player.vimeo.com/video/1129558957?h=2e45ba4add",
   },
+  {
+    title: "68 Pro Screen Full Overview",
+    url: "https://player.vimeo.com/video/1079537676?h=21b032376a",
+  },
+  
   {
     title: "68 Pro Screen Testimonial",
     url: "https://player.vimeo.com/video/1118787608?h=28d1d5af5a",
@@ -158,6 +160,10 @@ const sliderVideos68 = [
 
 const sliderVideosSlg108 = [
   {
+    title: "SLG 108 Product Demo",
+    url: "https://player.vimeo.com/video/1154326645?share=copy&fl=sv&fe=ci",
+  },
+  {
     title: "SLG 108 Overview",
     url: "https://player.vimeo.com/video/1130931600?share=copy&fl=sv&fe=ci",
   },
@@ -165,10 +171,7 @@ const sliderVideosSlg108 = [
     title: "SLG 108 In Action",
     url: "https://player.vimeo.com/video/1130937806?share=copy&fl=sv&fe=ci",
   },
-  {
-    title: "SLG 108 Product Demo",
-    url: "https://player.vimeo.com/video/1154326645?share=copy&fl=sv&fe=ci",
-  },
+  
   {
     title: "SLG 108 Spring Loaded Grizzly | Cantilevered Suspension System",
     url: "https://player.vimeo.com/video/1123901262?share=copy&fl=sv&fe=ci",
@@ -239,7 +242,7 @@ const sliderImages78 = [
   "/78/icons/78Pro2.webp",
   "/78/icons/78Pro3.webp",
   "/78/icons/78Pro4.webp",
- 
+
 ];
 
 const sliderImages68 = [
@@ -262,7 +265,7 @@ export default function Home() {
   const [activeSlideSlg56, setActiveSlideSlg56] = useState(0);
   const [isMachineModalOpen, setIsMachineModalOpen] = useState(false);
   const [selectedMachineModel, setSelectedMachineModel] = useState("");
-
+  
   const openMachineModal = (model: string) => {
     setSelectedMachineModel(model);
     setIsMachineModalOpen(true);
@@ -297,117 +300,247 @@ export default function Home() {
             priority
           />
           <h1 className="mt-3 text-[clamp(0.95rem,4.2vw,3.75rem)] font-extrabold leading-tight">
-            <span className="block whitespace-nowrap text-center">VIBRATORY SCREENERS</span>
-
+            <span className="block whitespace-nowrap text-center">VIBRATORY SCREENERS &</span>
+            <span className="block whitespace-nowrap text-center">SPRING GRIZZLY SCREENERS</span>
           </h1>
         </div>
 
-        <section id="modelos" className="grid grid-cols-1 gap-6 md:grid-cols-3">
+        <section id="modelos" className="grid grid-cols-1 gap-6 md:grid-cols-1">
           <article className="rounded-3xl border border-white/15 bg-white p-6 text-[#03122B] shadow-xl shadow-black/20">
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#2674F0]">
-              Portable Vibratory Screener
-            </p>
-            <h2 className="mt-3 text-2xl font-bold">108 ProScreen</h2>
-            <div className="mt-5">
-              <VimeoSlider
-                videos={sliderVideos108}
-                activeSlide={activeSlide}
-                setActiveSlide={setActiveSlide}
-              />
+            {/* TOP: VIDEO + MACHINE INFO */}
+            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
 
-              <p className="mt-4 text-center text-xs font-bold uppercase tracking-[0.14em] text-[#082F72]">
-                DESIGNED FOR FULL SIZED EQUIPMENT
-              </p>
-              <ImageSlider
-                images={sliderImages108}
-                alt="108 ProScreen"
-              />
+              {/* LEFT: VIDEO SLIDER */}
+              <div>
+                <VimeoSlider
+                  videos={sliderVideos108}
+                  activeSlide={activeSlide}
+                  setActiveSlide={setActiveSlide}
+                />
+              </div>
 
-              <p className="mt-3 text-center text-3xl font-extrabold tracking-tight text-[#082F72] md:text-4xl">
-                $19,900 USD
-              </p>
+              {/* RIGHT: MACHINE INFO */}
+              <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+
+                <h2 className="mt-3 text-3xl font-bold text-[#03122B] md:text-5xl">
+                  108 ProScreen
+                </h2>
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#2674F0]">
+                  Portable Vibratory Screener
+                </p>
+
+                <p className="mt-4 text-4xl font-extrabold tracking-tight text-[#082F72] md:text-5xl">
+                  $19,900 USD
+                </p>
+              </div>
             </div>
 
-            <ShippingQuoteButton model="108 ProScreen" />
-            <button
-              type="button"
-              onClick={() => openMachineModal("108 ProScreen")}
-              className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
-            >
-              <span aria-hidden="true">→</span>
-              WATCH IN ACTION
-            </button>
+            {/* MIDDLE: EQUIPMENT IMAGE SLIDER */}
+            <div className="mt-10">
+              <p className=" text-center text-xs font-bold uppercase tracking-[0.14em] text-[#082F72]">
+                DESIGNED FOR FULL SIZED EQUIPMENT
+              </p>
+
+              <div className="">
+                <ImageSlider
+                  images={sliderImages108}
+                  alt="108 ProScreen"
+                />
+              </div>
+            </div>
+
+            {/* BOTTOM: 4 COLUMNS FOR BUTTONS */}
+            <div className=" grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-4">
+
+
+              <button
+                type="button"
+                onClick={() =>
+                  document
+                    .getElementById("mesh-sizes")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
+                className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+              >
+                MESH SIZES
+              </button>
+              <button
+                type="button"
+                onClick={() => openMachineModal("108 ProScreen")}
+                className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+              >
+
+                PHOTO GALLERY
+              </button>
+
+              <Link
+                href="/models/108-proscreen"
+                className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+              >
+                MORE INFORMATION
+              </Link>
+
+              <ShippingQuoteButton model="108 ProScreen" />
+            </div>
           </article>
 
           <article className="rounded-3xl border border-[#2674F0] bg-gradient-to-b from-[#2674F0] to-[#082F72] p-6 text-white shadow-xl shadow-[#03122B]/40">
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#E0E3E8]">
-              Portable Vibratory Screener
-            </p>
-            <h2 className="mt-3 text-2xl font-bold">78 ProScreen</h2>
-            <div className="mt-5">
-              <VimeoSlider
-                videos={sliderVideos78}
-                activeSlide={activeSlide78}
-                setActiveSlide={setActiveSlide78}
-              />
+            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
 
-              <p className="mt-4 text-center text-xs font-bold uppercase tracking-[0.14em] text-[#E0E3E8]">
+              {/* LEFT: VIDEO SLIDER */}
+              <div>
+                <VimeoSlider
+                  videos={sliderVideos78}
+                  activeSlide={activeSlide78}
+                  setActiveSlide={setActiveSlide78}
+                />
+              </div>
+
+              {/* RIGHT: MACHINE INFO */}
+              <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+
+                <h2 className="mt-3 text-3xl font-bold text-white md:text-5xl">
+                  78 ProScreen
+                </h2>
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#E0E3E8]">
+                  Portable Vibratory Screener
+                </p>
+
+                <p className="mt-3 text-center text-3xl font-extrabold tracking-tight text-white md:text-5xl">
+                  $13,900 USD
+                </p>
+              </div>
+            </div>
+            {/* MIDDLE: EQUIPMENT IMAGE SLIDER */}
+            <div className="mt-10">
+              <p className=" mt-4 text-center text-xs font-bold uppercase tracking-[0.14em] text-[#E0E3E8]">
                 DESIGNED FOR MID SIZE EQUIPMENT
               </p>
-               <ImageSlider
-                images={sliderImages78}
-                alt="78 ProScreen"
-              />
 
-              <p className="mt-3 text-center text-3xl font-extrabold tracking-tight text-white md:text-4xl">
-                $13,900 USD
-              </p>
+              <div className="">
+                <ImageSlider
+                  images={sliderImages78}
+                  alt="78 ProScreen"
+                />
+              </div>
             </div>
-            <ShippingQuoteButton model="78 ProScreen" />
 
-            <button
-              type="button"
-              onClick={() => openMachineModal("78 ProScreen")}
-              className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
-            >
-              <span aria-hidden="true">→</span>
-              WATCH IN ACTION
-            </button>
+            {/* BOTTOM: 4 COLUMNS FOR BUTTONS */}
+            <div className=" grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-4">
+
+
+              <button
+                type="button"
+                onClick={() =>
+                  document
+                    .getElementById("mesh-sizes")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
+                className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+              >
+                MESH SIZES
+              </button>
+              <button
+                type="button"
+                onClick={() => openMachineModal("78 ProScreen")}
+                className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+              >
+
+                PHOTO GALLERY
+              </button>
+
+              <Link
+                href="/models/78-proscreen"
+                className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+              >
+                MORE INFORMATION
+              </Link>
+
+              <ShippingQuoteButton model="78 ProScreen" />
+            </div>
+
+
+
           </article>
 
           <article className="rounded-3xl border border-white/15 bg-white p-6 text-[#03122B] shadow-xl shadow-black/20">
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#2674F0]">
-              Portable Vibratory Screener
-            </p>
-            <h2 className="mt-3 text-2xl font-bold">68 ProScreen</h2>
-            <div className="mt-5">
-              <VimeoSlider
-                videos={sliderVideos68}
-                activeSlide={activeSlide68}
-                setActiveSlide={setActiveSlide68}
-              />
+            {/* TOP: VIDEO + MACHINE INFO */}
+            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
 
-              <p className="mt-4 text-center text-xs font-bold uppercase tracking-[0.14em] text-[#082F72]">
+              {/* LEFT: VIDEO SLIDER */}
+              <div>
+                <VimeoSlider
+                  videos={sliderVideos68}
+                  activeSlide={activeSlide68}
+                  setActiveSlide={setActiveSlide68}
+                />
+              </div>
+
+              {/* RIGHT: MACHINE INFO */}
+              <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+
+                <h2 className="mt-3 text-3xl font-bold text-[#03122B] md:text-5xl">
+                  68 ProScreen
+                </h2>
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#2674F0]">
+                  Portable Vibratory Screener
+                </p>
+
+                <p className="mt-4 text-4xl font-extrabold tracking-tight text-[#082F72] md:text-5xl">
+                  $7,900 USD
+                </p>
+              </div>
+            </div>
+
+            {/* MIDDLE: EQUIPMENT IMAGE SLIDER */}
+            <div className="mt-10">
+              <p className=" text-center text-xs font-bold uppercase tracking-[0.14em] text-[#082F72]">
                 DESIGNED FOR MINI SIZED EQUIPMENT
               </p>
-               <ImageSlider
-                images={sliderImages68}
-                alt="68 ProScreen"
-              />
 
-              <p className="mt-3 text-center text-3xl font-extrabold tracking-tight text-[#082F72] md:text-4xl">
-                $7,900 USD
-              </p>
+              <div className="">
+                <ImageSlider
+                  images={sliderImages68}
+                  alt="68 ProScreen"
+                />
+              </div>
             </div>
-            <ShippingQuoteButton model="68 ProScreen" />
-            <button
-              type="button"
-              onClick={() => openMachineModal("68 ProScreen")}
-              className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
-            >
-              <span aria-hidden="true">→</span>
-              WATCH IN ACTION
-            </button>
+
+            {/* BOTTOM: 4 COLUMNS FOR BUTTONS */}
+            <div className=" grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-4">
+
+
+              <button
+                type="button"
+                onClick={() =>
+                  document
+                    .getElementById("mesh-sizes")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
+                className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+              >
+                MESH SIZES
+              </button>
+              <button
+                type="button"
+                onClick={() => openMachineModal("68 ProScreen")}
+                className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+              >
+
+                PHOTO GALLERY
+              </button>
+
+              <Link
+                href="/models/68-proscreen"
+                className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+              >
+                MORE INFORMATION
+              </Link>
+
+              <ShippingQuoteButton model="68 ProScreen" />
+            </div>
+            
+            
           </article>
 
 
@@ -419,115 +552,246 @@ export default function Home() {
 
           </h1>
         </div>
-        <section id="modelos" className="grid grid-cols-1 gap-6 md:grid-cols-3">
+        <section id="modelos" className="grid grid-cols-1 gap-6 md:grid-cols-1">
 
 
           <article className="rounded-3xl border border-white/15 bg-white p-6 text-[#03122B] shadow-xl shadow-black/20">
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#2674F0]">
-              Grizzly Screener
-            </p>
-            <h2 className="mt-3 text-2xl font-bold">SLG 108</h2>
-            <div className="mt-5">
-              <VimeoSlider
-                videos={sliderVideosSlg108}
-                activeSlide={activeSlideSlg108}
-                setActiveSlide={setActiveSlideSlg108}
-              />
+           {/* TOP: VIDEO + MACHINE INFO */}
+            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
 
-              <p className="mt-4 text-center text-xs font-bold uppercase tracking-[0.14em] text-[#082F72]">
+              {/* LEFT: VIDEO SLIDER */}
+              <div>
+                <VimeoSlider
+                  videos={sliderVideosSlg108}
+                  activeSlide={activeSlideSlg108}
+                  setActiveSlide={setActiveSlideSlg108}
+                />
+              </div>
+
+              {/* RIGHT: MACHINE INFO */}
+              <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+
+                <h2 className="mt-3 text-3xl font-bold text-[#03122B] md:text-5xl">
+                  SLG 108
+                </h2>
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#2674F0]">
+                  Grizzly Screener
+                </p>
+
+                <p className="mt-4 text-4xl font-extrabold tracking-tight text-[#082F72] md:text-5xl">
+                  $14,900 USD
+                </p>
+              </div>
+            </div>
+
+            {/* MIDDLE: EQUIPMENT IMAGE SLIDER */}
+            <div className="mt-10">
+              <p className=" text-center text-xs font-bold uppercase tracking-[0.14em] text-[#082F72]">
                 DESIGNED FOR FULL SIZED EQUIPMENT
               </p>
-              <ImageSlider
-                images={sliderImages108}
-                alt="SLG 108"
-              />
 
-              <p className="mt-3 text-center text-3xl font-extrabold tracking-tight text-[#082F72] md:text-4xl">
-                $14,900 USD
-              </p>
+              <div className="">
+                <ImageSlider
+                  images={sliderImages108}
+                  alt="SLG 108"
+                />
+              </div>
             </div>
-            <ShippingQuoteButton model="SLG 108" />
-            <button
-              type="button"
-              onClick={() => openMachineModal("SLG 108")}
-              className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
-            >
-              <span aria-hidden="true">→</span>
-              WATCH IN ACTION
-            </button>
+
+            {/* BOTTOM: 4 COLUMNS FOR BUTTONS */}
+            <div className=" grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-4">
+
+
+              <button
+                type="button"
+                onClick={() =>
+                  document
+                    .getElementById("mesh-sizes")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
+                className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+              >
+                MESH SIZES
+              </button>
+              <button
+                type="button"
+                onClick={() => openMachineModal("SLG 108")}
+                className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+              >
+
+                PHOTO GALLERY
+              </button>
+
+              <Link
+                href="/models/slg-108"
+                className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+              >
+                MORE INFORMATION
+              </Link>
+
+              <ShippingQuoteButton model="SLG 108" />
+            </div>
+           
           </article>
 
           <article className="rounded-3xl border border-[#2674F0] bg-gradient-to-b from-[#2674F0] to-[#082F72] p-6 text-white shadow-xl shadow-[#03122B]/40">
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#E0E3E8]">
-              Grizzly Screener
-            </p>
-            <h2 className="mt-3 text-2xl font-bold">SLG 78</h2>
-            <div className="mt-5">
-              <VimeoSlider
-                videos={sliderVideosSlg78}
-                activeSlide={activeSlideSlg78}
-                setActiveSlide={setActiveSlideSlg78}
-              />
+            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
 
-              <p className="mt-4 text-center text-xs font-bold uppercase tracking-[0.14em] text-[#E0E3E8]">
+              {/* LEFT: VIDEO SLIDER */}
+              <div>
+                <VimeoSlider
+                  videos={sliderVideosSlg78}
+                  activeSlide={activeSlideSlg78}
+                  setActiveSlide={setActiveSlideSlg78}
+                />
+              </div>
+
+              {/* RIGHT: MACHINE INFO */}
+              <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+
+                <h2 className="mt-3 text-3xl font-bold text-white md:text-5xl">
+                  SLG 78
+                </h2>
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#E0E3E8]">
+                  Grizzly Screener
+                </p>
+
+                <p className="mt-3 text-center text-3xl font-extrabold tracking-tight text-white md:text-5xl">
+                  $7,900 USD
+                </p>
+              </div>
+            </div>
+            {/* MIDDLE: EQUIPMENT IMAGE SLIDER */}
+            <div className="mt-10">
+              <p className=" mt-4 text-center text-xs font-bold uppercase tracking-[0.14em] text-[#E0E3E8]">
                 DESIGNED FOR MID SIZE EQUIPMENT
               </p>
-              <ImageSlider
-                images={sliderImages78}
-                alt="SLG 78 "
-              />
 
-              <p className="mt-3 text-center text-3xl font-extrabold tracking-tight text-white md:text-4xl">
-                $7,900 USD
-              </p>
+              <div className="">
+                <ImageSlider
+                  images={sliderImages78}
+                  alt="SLG 78"
+                />
+              </div>
             </div>
-            <ShippingQuoteButton model="SLG 78" />
-            <button
-              type="button"
-              onClick={() => openMachineModal("SLG 78")}
-              className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
-            >
-              <span aria-hidden="true">→</span>
-              WATCH IN ACTION
-            </button>
+
+            {/* BOTTOM: 4 COLUMNS FOR BUTTONS */}
+            <div className=" grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-4">
+
+
+              <button
+                type="button"
+                onClick={() =>
+                  document
+                    .getElementById("mesh-sizes")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
+                className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+              >
+                MESH SIZES
+              </button>
+              <button
+                type="button"
+                onClick={() => openMachineModal("SLG 78")}
+                className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+              >
+
+                PHOTO GALLERY
+              </button>
+
+              <Link
+                href="/models/slg-78"
+                className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+              >
+                MORE INFORMATION
+              </Link>
+
+              <ShippingQuoteButton model="SLG 78" />
+            </div>
+            
+            
           </article>
 
           <article className="rounded-3xl border border-white/15 bg-white p-6 text-[#03122B] shadow-xl shadow-black/20">
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#2674F0]">
-              Portable Screener
-            </p>
-            <h2 className="mt-3 text-2xl font-bold">SLG 56</h2>
-            <div className="mt-5">
-              <VimeoSlider
-                videos={sliderVideosSlg56}
-                activeSlide={activeSlideSlg56}
-                setActiveSlide={setActiveSlideSlg56}
-              />
+            {/* TOP: VIDEO + MACHINE INFO */}
+            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
 
-              <p className="mt-4 text-center text-xs font-bold uppercase tracking-[0.14em] text-[#082F72]">
-                DESIGNED FOR COMPACT EQUIPMENT
-              </p>
-               <ImageSlider
-                images={sliderImages56}
-                alt="SLG 56 "
-              />
+              {/* LEFT: VIDEO SLIDER */}
+              <div>
+                <VimeoSlider
+                  videos={sliderVideosSlg56}
+                  activeSlide={activeSlideSlg56}
+                  setActiveSlide={setActiveSlideSlg56}
+                />
+              </div>
 
-              <p className="mt-3 text-center text-3xl font-extrabold tracking-tight text-[#082F72] md:text-4xl">
-                $4,500 USD
-              </p>
+              {/* RIGHT: MACHINE INFO */}
+              <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+
+                <h2 className="mt-3 text-3xl font-bold text-[#03122B] md:text-5xl">
+                  SLG 56
+                </h2>
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#2674F0]">
+                  Portable Screener
+                </p>
+
+                <p className="mt-4 text-4xl font-extrabold tracking-tight text-[#082F72] md:text-5xl">
+                   $4,500 USD
+                </p>
+              </div>
             </div>
-            <ShippingQuoteButton model="SLG 56" />
-            <button
-              type="button"
-              onClick={() => openMachineModal("SLG 56")}
-              className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
-            >
-              <span aria-hidden="true">→</span>
-              WATCH IN ACTION
-            </button>
+
+            {/* MIDDLE: EQUIPMENT IMAGE SLIDER */}
+            <div className="mt-10">
+              <p className=" text-center text-xs font-bold uppercase tracking-[0.14em] text-[#082F72]">
+                DESIGNED FOR MINI SIZED EQUIPMENT
+              </p>
+
+              <div className="">
+                <ImageSlider
+                  images={sliderImages56}
+                  alt="SLG 56"
+                />
+              </div>
+            </div>
+
+            {/* BOTTOM: 4 COLUMNS FOR BUTTONS */}
+            <div className=" grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-4">
+
+
+              <button
+                type="button"
+                onClick={() =>
+                  document
+                    .getElementById("mesh-sizes")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
+                className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+              >
+                MESH SIZES
+              </button>
+              <button
+                type="button"
+                onClick={() => openMachineModal("SLG 56")}
+                className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+              >
+
+                PHOTO GALLERY
+              </button>
+
+              <Link
+                href="/models/slg-56"
+                className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+              >
+                MORE INFORMATION
+              </Link>
+
+              <ShippingQuoteButton model="SLG 56" />
+            </div>
+            
           </article>
         </section>
-        <section className="mx-auto mt-8 w-full max-w-5xl rounded-2xl border border-white/20 bg-white/5 p-5 md:p-6">
+        <section id="mesh-sizes" className="mx-auto mt-8 w-full max-w-5xl rounded-2xl border border-white/20 bg-white/5 p-5 md:p-6">
           <h2 className="text-center text-xl font-extrabold uppercase tracking-wide md:text-3xl">
             ABOUT MESH
           </h2>
@@ -636,15 +900,22 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        
         <DeferredShippingQuoteSection />
+       
 
         <section
           id="contacto"
           className="rounded-3xl border border-white/20 bg-white/10 p-8 text-center backdrop-blur-sm"
         >
           <h3 className="text-2xl font-bold md:text-3xl">
-            Ready to get your Topsoil Screener?
+            Ready For a Screener?
           </h3>
+          <h3 className="text-2xl font-bold md:text-3xl">
+            Have More Questions?
+          </h3>
+          
           <p className="mt-3 text-[#E0E3E8]">
             Call us now for shipping quotes and current availability.
           </p>

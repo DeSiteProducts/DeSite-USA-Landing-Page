@@ -1,12 +1,12 @@
-export const VIBRATION_OPTIONS = ["Yes", "No", "I'm not sure"] as const;
+export const VIBRATION_OPTIONS = ["Vibratory", "Grizzly", "I'm not sure"] as const;
 export const FINANCING_OPTIONS = ["Yes", "No"] as const;
 export const COUNTRY_OPTIONS = ["United States", "Canada"] as const;
 
 export const BUCKET_WIDTH_OPTIONS = [
-  "0-56",
-  "56-68",
-  "69-84",
-  "85-108",
+  "56 inches or less",
+  "68 inches or less",
+  "84 inches or less",
+  "108 inches or less",
 ] as const;
 
 export const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -95,24 +95,24 @@ export function getRecommendation(
   vibrationNeeded: VibrationNeeded,
   bucketWidthRange: BucketWidthRange
 ): Recommendation {
-  if (vibrationNeeded === "Yes") {
+  if (vibrationNeeded === "Vibratory") {
     const vibrationRecommendations: Record<BucketWidthRange, Recommendation> = {
-      "0-56": {
+      "56 inches or less": {
         model: "SLG 56",
         note: "Only recommended model for this bucket range, even when vibration is selected.",
         requiresReview: false,
       },
-      "56-68": {
+      "68 inches or less": {
         model: "68 ProScreen",
         note: "",
         requiresReview: false,
       },
-      "69-84": {
+      "84 inches or less": {
         model: "78 ProScreen",
         note: "",
         requiresReview: false,
       },
-      "85-108": {
+      "108 inches or less": {
         model: "108 ProScreen",
         note: "",
         requiresReview: false,
@@ -123,22 +123,22 @@ export function getRecommendation(
   }
 
   const grizzlyRecommendations: Record<BucketWidthRange, Recommendation> = {
-    "0-56": {
+    "56 inches or less": {
       model: "SLG 56",
       note: "",
       requiresReview: false,
     },
-    "56-68": {
+    "68 inches or less": {
       model: "78 Grizzly",
       note: "Closest non-vibration option for this bucket size.",
       requiresReview: false,
     },
-    "69-84": {
+    "84 inches or less": {
       model: "78 Grizzly",
       note: "",
       requiresReview: false,
     },
-    "85-108": {
+    "108 inches or less": {
       model: "108 Grizzly",
       note: "",
       requiresReview: false,
@@ -158,28 +158,28 @@ export function getInitialAnswersFromModel(model: string | undefined): {
     { vibrationNeeded: VibrationNeeded; bucketWidthRange: BucketWidthRange }
   > = {
     "68 ProScreen": {
-      vibrationNeeded: "Yes",
-      bucketWidthRange: "56-68",
+      vibrationNeeded: "Vibratory",
+      bucketWidthRange: "68 inches or less",
     },
     "78 ProScreen": {
-      vibrationNeeded: "Yes",
-      bucketWidthRange: "69-84",
+      vibrationNeeded: "Vibratory",
+      bucketWidthRange: "84 inches or less",
     },
     "108 ProScreen": {
-      vibrationNeeded: "Yes",
-      bucketWidthRange: "85-108",
+      vibrationNeeded: "Vibratory",
+      bucketWidthRange: "108 inches or less",
     },
     "SLG 56": {
-      vibrationNeeded: "No",
-      bucketWidthRange: "0-56",
+      vibrationNeeded: "Grizzly",
+      bucketWidthRange: "56 inches or less",
     },
     "SLG 78": {
-      vibrationNeeded: "No",
-      bucketWidthRange: "69-84",
+      vibrationNeeded: "Grizzly",
+      bucketWidthRange: "68 inches or less",
     },
     "SLG 108": {
-      vibrationNeeded: "No",
-      bucketWidthRange: "85-108",
+      vibrationNeeded: "Grizzly",
+      bucketWidthRange: "108 inches or less",
     },
   };
 

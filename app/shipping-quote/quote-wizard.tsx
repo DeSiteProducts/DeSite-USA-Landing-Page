@@ -266,7 +266,7 @@ export default function QuoteWizard({ initialModel, isError }: QuoteWizardProps)
               <div className="w-full">
                 {step === 1 ? (
                   <section>
-                    <h2 className={questionClass}>Do you need a vibration screener?</h2>
+                    <h2 className={questionClass}>Would you like a Vibratory Screener or Grizzly Screener?</h2>
                     <div className="mt-6 grid gap-3 sm:grid-cols-2">
                       {VIBRATION_OPTIONS.map((option) => (
                         <OptionButton
@@ -283,7 +283,7 @@ export default function QuoteWizard({ initialModel, isError }: QuoteWizardProps)
 
                 {step === 2 ? (
                   <section>
-                    <h2 className={questionClass}>How wide is your bucket in inches?</h2>
+                    <h2 className={questionClass}>What is your bucket width in inches?</h2>
                     <div className="mt-6 grid gap-3">
                       {BUCKET_WIDTH_OPTIONS.map((option) => (
                         <OptionButton
@@ -299,7 +299,7 @@ export default function QuoteWizard({ initialModel, isError }: QuoteWizardProps)
                 ) : null}
                 {step === 3 ? (
                   <section>
-                    <h2 className={questionClass}>What is your lead time?</h2>
+                    <h2 className={questionClass}>When would you like your screener?</h2>
 
                     <div className="mt-6 grid gap-3">
                       {LEAD_TIME_OPTIONS.map((option) => (
@@ -318,7 +318,7 @@ export default function QuoteWizard({ initialModel, isError }: QuoteWizardProps)
                 {step === 4 ? (
                   <section>
                     <label htmlFor="fullNameInput" className={questionClass}>
-                      What is your full name?
+                      Your full name please
                     </label>
                     <input
                       id="fullNameInput"
@@ -335,7 +335,7 @@ export default function QuoteWizard({ initialModel, isError }: QuoteWizardProps)
                 {step === 5 ? (
                   <section>
                     <label htmlFor="phoneInput" className={questionClass}>
-                      What is your phone number?
+                     Your contact number please
                     </label>
                     <p className="mt-3 text-sm leading-6 text-[#536177]">
                       Enter a valid US or Canadian phone number. Format: (800) 890
@@ -359,7 +359,7 @@ export default function QuoteWizard({ initialModel, isError }: QuoteWizardProps)
                 {step === 6 ? (
                   <section>
                     <label htmlFor="emailInput" className={questionClass}>
-                      What is your email address?
+                      Email address?
                     </label>
                     <input
                       id="emailInput"
@@ -377,7 +377,7 @@ export default function QuoteWizard({ initialModel, isError }: QuoteWizardProps)
 
                 {step === 7 ? (
                   <section>
-                    <h2 className={questionClass}>What is your full shipping address?</h2>
+                    <h2 className={questionClass}>Delivery address?</h2>
                     <div className="mt-6 grid gap-4">
                       <input
                         aria-label="Street address"
@@ -440,7 +440,7 @@ export default function QuoteWizard({ initialModel, isError }: QuoteWizardProps)
 
                 {step === 8 ? (
                   <section>
-                    <h2 className={questionClass}>Are you interested in financing?</h2>
+                    <h2 className={questionClass}>Would you like financing ?</h2>
                     <div className="mt-6 grid gap-3 sm:grid-cols-2">
                       {FINANCING_OPTIONS.map((option) => (
                         <OptionButton
@@ -460,7 +460,7 @@ export default function QuoteWizard({ initialModel, isError }: QuoteWizardProps)
                     <h2 className={questionClass}>Please confirm your contact consent.</h2>
                     {recommendation ? (
                       <div className="mt-5 rounded-lg border border-[#C7D3E5] bg-white p-4 text-sm text-[#536177] shadow-sm">
-                        <p className="font-semibold text-[#03122B]">Recommended model</p>
+                        <p className="font-semibold text-[#03122B]">We recommend our </p>
                         <p className="mt-1 text-lg font-extrabold text-[#073073]">
                           {recommendation.requiresReview
                             ? "Team review"
@@ -479,8 +479,7 @@ export default function QuoteWizard({ initialModel, isError }: QuoteWizardProps)
                         className="mt-1 size-4 accent-[#2674F0]"
                       />
                       <span>
-                        I consent to be contacted by phone, email, or SMS regarding my
-                        quote request, shipping details, and financing options.
+                        May we contact you by phone, email, or SMS regarding your quote request?
                       </span>
                     </label>
                   </section>
