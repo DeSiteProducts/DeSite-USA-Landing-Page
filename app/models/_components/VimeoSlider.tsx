@@ -133,7 +133,7 @@ export default function VimeoSlider({
         type="button"
         aria-label="Previous video"
         onClick={showPrevious}
-        className="absolute left-3 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-lg text-[#082F72] shadow transition hover:bg-white"
+        className="absolute left-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-xl text-[#082F72] shadow transition hover:bg-white"
       >
         ‹
       </button>
@@ -143,7 +143,7 @@ export default function VimeoSlider({
         type="button"
         aria-label="Next video"
         onClick={showNext}
-        className="absolute right-3 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-lg text-[#082F72] shadow transition hover:bg-white"
+        className="absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-xl text-[#082F72] shadow transition hover:bg-white"
       >
         ›
       </button>

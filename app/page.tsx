@@ -119,6 +119,11 @@ const sliderVideos78 = [
 ];
 
 const sliderVideos68 = [
+  
+  {
+    title: "68 Hompage",
+    url: "https://player.vimeo.com/video/892414970?h=d21aacc03c",
+  },
   {
     title: "68 Pro Screen Overview",
     url: "https://player.vimeo.com/video/1129558957?h=2e45ba4add",
@@ -147,10 +152,6 @@ const sliderVideos68 = [
   {
     title: "68 Pro Screen Overview",
     url: "https://player.vimeo.com/video/1040504352?h=d21aacc03c",
-  },
-  {
-    title: "68 Hompage",
-    url: "https://player.vimeo.com/video/892414970?h=d21aacc03c",
   },
   {
     title: "68 Pro Screen Testimonial",
@@ -233,7 +234,6 @@ const sliderImages108 = [
   "/108/icons/2.webp",
   "/108/icons/3.webp",
   "/108/icons/4.webp",
-  "/108/icons/5.webp",
   "/108/icons/6.webp",
 ];
 
@@ -306,7 +306,7 @@ export default function Home() {
         </div>
 
         <section id="modelos" className="grid grid-cols-1 gap-6 md:grid-cols-1">
-          <article className="rounded-3xl border border-white/15 bg-white p-6 text-[#03122B] shadow-xl shadow-black/20">
+          <article className="rounded-3xl border border-[#2674F0] bg-gradient-to-b from-[#2674F0] to-[#082F72] p-6 text-white shadow-xl shadow-[#03122B]/40">
             {/* TOP: VIDEO + MACHINE INFO */}
             <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1.4fr_1fr]">
 
@@ -322,14 +322,14 @@ export default function Home() {
               {/* RIGHT: MACHINE INFO */}
               <div className="flex flex-col items-center text-center lg:items-center lg:text-center">
 
-                <h2 className="mt-3 text-3xl font-bold text-[#03122B] md:text-5xl text-center">
+                <h2 className="mt-3 text-4xl font-bold text-white md:text-6xl">
                   108 ProScreen
                 </h2>
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#2674F0]">
-                  Portable Vibratory Screener
+                <p className="text-lg font-semibold uppercase tracking-[0.14em] text-[#E0E3E8]">
+                  Vibratory Screener
                 </p>
 
-                <p className="mt-4 text-4xl font-extrabold tracking-tight text-[#082F72] md:text-5xl">
+                <p  className="mt-3 text-center text-4xl font-extrabold tracking-tight text-white md:text-6xl">
                   $19,900 USD
                 </p>
 
@@ -344,14 +344,14 @@ export default function Home() {
                         .getElementById("mesh-sizes")
                         ?.scrollIntoView({ behavior: "smooth" })
                     }
-                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
                   >
                     MESH SIZES
                   </button>
                   <button
                     type="button"
                     onClick={() => openMachineModal("108 ProScreen")}
-                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
                   >
 
                     PHOTO GALLERY
@@ -359,7 +359,7 @@ export default function Home() {
 
                   <Link
                     href="/models/108-proscreen"
-                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
                   >
                     MORE INFORMATION
                   </Link>
@@ -371,7 +371,7 @@ export default function Home() {
 
             {/* MIDDLE: EQUIPMENT IMAGE SLIDER */}
             <div className="mt-10">
-              <p className=" text-center text-xs font-bold uppercase tracking-[0.14em] text-[#082F72]">
+              <p className=" mt-4 text-center text-xl font-bold uppercase tracking-[0.14em] text-[#E0E3E8]">
                 DESIGNED FOR FULL SIZED EQUIPMENT
               </p>
 
@@ -401,14 +401,14 @@ export default function Home() {
               {/* RIGHT: MACHINE INFO */}
               <div className="flex flex-col items-center text-center lg:items-center lg:text-center">
 
-                <h2 className="mt-3 text-3xl font-bold text-white md:text-5xl">
+                <h2 className="mt-3 text-4xl font-bold text-white md:text-6xl">
                   78 ProScreen
                 </h2>
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#E0E3E8]">
-                  Portable Vibratory Screener
+                <p className="text-lg font-semibold uppercase tracking-[0.14em] text-[#E0E3E8]">
+                 Vibratory Screener
                 </p>
 
-                <p className="mt-3 text-center text-3xl font-extrabold tracking-tight text-white md:text-5xl">
+                <p className="mt-3 text-center text-4xl font-extrabold tracking-tight text-white md:text-6xl">
                   $13,900 USD
                 </p>
                 {/* BOTTOM: 4 COLUMNS FOR BUTTONS */}
@@ -422,14 +422,14 @@ export default function Home() {
                         .getElementById("mesh-sizes")
                         ?.scrollIntoView({ behavior: "smooth" })
                     }
-                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
                   >
                     MESH SIZES
                   </button>
                   <button
                     type="button"
                     onClick={() => openMachineModal("78 ProScreen")}
-                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
                   >
 
                     PHOTO GALLERY
@@ -437,7 +437,7 @@ export default function Home() {
 
                   <Link
                     href="/models/78-proscreen"
-                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
                   >
                     MORE INFORMATION
                   </Link>
@@ -448,7 +448,7 @@ export default function Home() {
             </div>
             {/* MIDDLE: EQUIPMENT IMAGE SLIDER */}
             <div className="mt-10">
-              <p className=" mt-4 text-center text-xs font-bold uppercase tracking-[0.14em] text-[#E0E3E8]">
+              <p className=" mt-4 text-center text-xl font-bold uppercase tracking-[0.14em] text-[#E0E3E8]">
                 DESIGNED FOR MID SIZE EQUIPMENT
               </p>
 
@@ -464,7 +464,7 @@ export default function Home() {
 
           </article>
 
-          <article className="rounded-3xl border border-white/15 bg-white p-6 text-[#03122B] shadow-xl shadow-black/20">
+          <article className="rounded-3xl border border-[#2674F0] bg-gradient-to-b from-[#2674F0] to-[#082F72] p-6 text-white shadow-xl shadow-[#03122B]/40">
             {/* TOP: VIDEO + MACHINE INFO */}
             <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1.4fr_1fr]">
 
@@ -480,14 +480,14 @@ export default function Home() {
               {/* RIGHT: MACHINE INFO */}
               <div className="flex flex-col items-center text-center lg:items-center lg:text-center">
 
-                <h2 className="mt-3 text-3xl font-bold text-[#03122B] md:text-5xl">
+                <h2 className="mt-3 text-4xl font-bold text-white md:text-6xl">
                   68 ProScreen
                 </h2>
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#2674F0]">
-                  Portable Vibratory Screener
+                <p className="text-lg font-semibold uppercase tracking-[0.14em] text-[#E0E3E8]">
+                   Vibratory Screener
                 </p>
 
-                <p className="mt-4 text-4xl font-extrabold tracking-tight text-[#082F72] md:text-5xl">
+                <p  className="mt-3 text-center text-4xl font-extrabold tracking-tight text-white md:text-6xl">
                   $7,900 USD
                 </p>
                 {/* BOTTOM: 2 COLUMNS FOR BUTTONS */}
@@ -501,14 +501,14 @@ export default function Home() {
                         .getElementById("mesh-sizes")
                         ?.scrollIntoView({ behavior: "smooth" })
                     }
-                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
                   >
                     MESH SIZES
                   </button>
                   <button
                     type="button"
                     onClick={() => openMachineModal("68 ProScreen")}
-                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
                   >
 
                     PHOTO GALLERY
@@ -516,7 +516,7 @@ export default function Home() {
 
                   <Link
                     href="/models/68-proscreen"
-                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                   className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
                   >
                     MORE INFORMATION
                   </Link>
@@ -529,7 +529,7 @@ export default function Home() {
 
             {/* MIDDLE: EQUIPMENT IMAGE SLIDER */}
             <div className="mt-10">
-              <p className=" text-center text-xs font-bold uppercase tracking-[0.14em] text-[#082F72]">
+              <p className=" mt-4 text-center text-xl font-bold uppercase tracking-[0.14em] text-[#E0E3E8]">
                 DESIGNED FOR MINI SIZED EQUIPMENT
               </p>
 
@@ -558,7 +558,7 @@ export default function Home() {
         <section id="modelos" className="grid grid-cols-1 gap-6 md:grid-cols-1">
 
 
-          <article className="rounded-3xl border border-white/15 bg-white p-6 text-[#03122B] shadow-xl shadow-black/20">
+          <article className="rounded-3xl border border-[#2674F0] bg-gradient-to-b from-[#2674F0] to-[#082F72] p-6 text-white shadow-xl shadow-[#03122B]/40">
             {/* TOP: VIDEO + MACHINE INFO */}
             <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1.4fr_1fr]">
 
@@ -574,14 +574,14 @@ export default function Home() {
               {/* RIGHT: MACHINE INFO */}
               <div className="flex flex-col items-center text-center lg:items-center lg:text-center">
 
-                <h2 className="mt-3 text-3xl font-bold text-[#03122B] md:text-5xl">
+                <h2 className="mt-3 text-4xl font-bold text-white md:text-6xl">
                   SLG 108
                 </h2>
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#2674F0]">
+                <p className="text-lg font-semibold uppercase tracking-[0.14em] text-[#E0E3E8]">
                   Grizzly Screener
                 </p>
 
-                <p className="mt-4 text-4xl font-extrabold tracking-tight text-[#082F72] md:text-5xl">
+                <p className="mt-3 text-center text-4xl font-extrabold tracking-tight text-white md:text-6xl">
                   $14,900 USD
                 </p>
                 {/* BOTTOM: 2 COLUMNS FOR BUTTONS */}
@@ -595,14 +595,14 @@ export default function Home() {
                         .getElementById("mesh-sizes")
                         ?.scrollIntoView({ behavior: "smooth" })
                     }
-                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
                   >
                     MESH SIZES
                   </button>
                   <button
                     type="button"
                     onClick={() => openMachineModal("SLG 108")}
-                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                   className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
                   >
 
                     PHOTO GALLERY
@@ -610,7 +610,7 @@ export default function Home() {
 
                   <Link
                     href="/models/slg-108"
-                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
                   >
                     MORE INFORMATION
                   </Link>
@@ -622,7 +622,7 @@ export default function Home() {
 
             {/* MIDDLE: EQUIPMENT IMAGE SLIDER */}
             <div className="mt-10">
-              <p className=" text-center text-xs font-bold uppercase tracking-[0.14em] text-[#082F72]">
+              <p className=" mt-4 text-center text-xl font-bold uppercase tracking-[0.14em] text-[#E0E3E8]">
                 DESIGNED FOR FULL SIZED EQUIPMENT
               </p>
 
@@ -653,14 +653,14 @@ export default function Home() {
               {/* RIGHT: MACHINE INFO */}
               <div className="flex flex-col items-center text-center lg:items-center lg:text-center">
 
-                <h2 className="mt-3 text-3xl font-bold text-white md:text-5xl">
+                <h2 className="mt-3 text-4xl font-bold text-white md:text-6xl">
                   SLG 78
                 </h2>
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#E0E3E8]">
+                <p className="text-lg font-semibold uppercase tracking-[0.14em] text-[#E0E3E8]">
                   Grizzly Screener
                 </p>
 
-                <p className="mt-3 text-center text-3xl font-extrabold tracking-tight text-white md:text-5xl">
+                <p className="mt-3 text-center text-4xl font-extrabold tracking-tight text-white md:text-6xl">
                   $7,900 USD
                 </p>
                 {/* BOTTOM: 2 COLUMNS FOR BUTTONS */}
@@ -674,14 +674,14 @@ export default function Home() {
                         .getElementById("mesh-sizes")
                         ?.scrollIntoView({ behavior: "smooth" })
                     }
-                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                   className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
                   >
                     MESH SIZES
                   </button>
                   <button
                     type="button"
                     onClick={() => openMachineModal("SLG 78")}
-                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
                   >
 
                     PHOTO GALLERY
@@ -689,7 +689,7 @@ export default function Home() {
 
                   <Link
                     href="/models/slg-78"
-                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                   className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
                   >
                     MORE INFORMATION
                   </Link>
@@ -700,7 +700,7 @@ export default function Home() {
             </div>
             {/* MIDDLE: EQUIPMENT IMAGE SLIDER */}
             <div className="mt-10">
-              <p className=" mt-4 text-center text-xs font-bold uppercase tracking-[0.14em] text-[#E0E3E8]">
+              <p className=" mt-4 text-center text-xl font-bold uppercase tracking-[0.14em] text-[#E0E3E8]">
                 DESIGNED FOR MID SIZE EQUIPMENT
               </p>
 
@@ -714,7 +714,7 @@ export default function Home() {
 
           </article>
 
-          <article className="rounded-3xl border border-white/15 bg-white p-6 text-[#03122B] shadow-xl shadow-black/20">
+          <article className="rounded-3xl border border-[#2674F0] bg-gradient-to-b from-[#2674F0] to-[#082F72] p-6 text-white shadow-xl shadow-[#03122B]/40">
             {/* TOP: VIDEO + MACHINE INFO */}
             <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1.4fr_1fr]">
 
@@ -730,14 +730,14 @@ export default function Home() {
               {/* RIGHT: MACHINE INFO */}
               <div className="flex flex-col items-center text-center lg:items-center lg:text-center">
 
-                <h2 className="mt-3 text-3xl font-bold text-[#03122B] md:text-5xl">
+                <h2 className="mt-3 text-4xl font-bold text-white md:text-6xl">
                   SLG 56
                 </h2>
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#2674F0]">
+                <p className="text-lg font-semibold uppercase tracking-[0.14em] text-[#E0E3E8]">
                   Portable Screener
                 </p>
 
-                <p className="mt-4 text-4xl font-extrabold tracking-tight text-[#082F72] md:text-5xl">
+                <p className="mt-3 text-center text-4xl font-extrabold tracking-tight text-white md:text-6xl">
                   $4,500 USD
                 </p>
                 {/* BOTTOM: 2 COLUMNS FOR BUTTONS */}
@@ -751,14 +751,14 @@ export default function Home() {
                         .getElementById("mesh-sizes")
                         ?.scrollIntoView({ behavior: "smooth" })
                     }
-                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
                   >
                     MESH SIZES
                   </button>
                   <button
                     type="button"
                     onClick={() => openMachineModal("SLG 56")}
-                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
                   >
 
                     PHOTO GALLERY
@@ -766,7 +766,7 @@ export default function Home() {
 
                   <Link
                     href="/models/slg-56"
-                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
                   >
                     MORE INFORMATION
                   </Link>
@@ -778,7 +778,7 @@ export default function Home() {
 
             {/* MIDDLE: EQUIPMENT IMAGE SLIDER */}
             <div className="mt-10">
-              <p className=" text-center text-xs font-bold uppercase tracking-[0.14em] text-[#082F72]">
+              <p className=" mt-4 text-center text-xl font-bold uppercase tracking-[0.14em] text-[#E0E3E8]">
                 DESIGNED FOR MINI SIZED EQUIPMENT
               </p>
 
