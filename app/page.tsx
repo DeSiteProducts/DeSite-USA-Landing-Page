@@ -300,8 +300,9 @@ export default function Home() {
             priority
           />
           <h1 className="mt-3 text-[clamp(0.95rem,4.2vw,3.75rem)] font-extrabold leading-tight">
-            <span className="block whitespace-nowrap text-center">VIBRATORY SCREENERS &</span>
-            <span className="block whitespace-nowrap text-center">SPRING GRIZZLY SCREENERS</span>
+            <span className="block whitespace-nowrap text-center">VIBRATORY SCREENERS </span>
+            <span className="block whitespace-nowrap text-center">&</span>
+            <span className="block whitespace-nowrap text-center">GRIZZLY SCREENERS</span>
           </h1>
         </div>
 
@@ -344,14 +345,14 @@ export default function Home() {
                         .getElementById("mesh-sizes")
                         ?.scrollIntoView({ behavior: "smooth" })
                     }
-                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#0f0] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[white] transition hover:bg-[#C9D1DC] hover:text-black"
                   >
                     MESH SIZES
                   </button>
                   <button
                     type="button"
                     onClick={() => openMachineModal("108 ProScreen")}
-                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#0f0] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[white] transition hover:bg-[#C9D1DC] hover:text-black"
                   >
 
                     PHOTO GALLERY
@@ -359,7 +360,7 @@ export default function Home() {
 
                   <Link
                     href="/models/108-proscreen"
-                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#0f0] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[white] transition hover:bg-[#C9D1DC] hover:text-black"
                   >
                     MORE INFORMATION
                   </Link>
@@ -422,14 +423,14 @@ export default function Home() {
                         .getElementById("mesh-sizes")
                         ?.scrollIntoView({ behavior: "smooth" })
                     }
-                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#0f0] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[white] transition hover:bg-[#C9D1DC] hover:text-black"
                   >
                     MESH SIZES
                   </button>
                   <button
                     type="button"
                     onClick={() => openMachineModal("78 ProScreen")}
-                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                   className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#0f0] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[white] transition hover:bg-[#C9D1DC] hover:text-black"
                   >
 
                     PHOTO GALLERY
@@ -437,7 +438,7 @@ export default function Home() {
 
                   <Link
                     href="/models/78-proscreen"
-                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#0f0] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[white] transition hover:bg-[#C9D1DC] hover:text-black"
                   >
                     MORE INFORMATION
                   </Link>
@@ -501,14 +502,14 @@ export default function Home() {
                         .getElementById("mesh-sizes")
                         ?.scrollIntoView({ behavior: "smooth" })
                     }
-                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#0f0] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[white] transition hover:bg-[#C9D1DC] hover:text-black"
                   >
                     MESH SIZES
                   </button>
                   <button
                     type="button"
                     onClick={() => openMachineModal("68 ProScreen")}
-                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#0f0] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[white] transition hover:bg-[#C9D1DC] hover:text-black"
                   >
 
                     PHOTO GALLERY
@@ -516,7 +517,7 @@ export default function Home() {
 
                   <Link
                     href="/models/68-proscreen"
-                   className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                   className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#0f0] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[white] transition hover:bg-[#C9D1DC] hover:text-black"
                   >
                     MORE INFORMATION
                   </Link>
@@ -595,14 +596,14 @@ export default function Home() {
                         .getElementById("mesh-sizes")
                         ?.scrollIntoView({ behavior: "smooth" })
                     }
-                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#0f0] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[white] transition hover:bg-[#C9D1DC] hover:text-black"
                   >
                     MESH SIZES
                   </button>
                   <button
                     type="button"
                     onClick={() => openMachineModal("SLG 108")}
-                   className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                   className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#0f0] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[white] transition hover:bg-[#C9D1DC] hover:text-black"
                   >
 
                     PHOTO GALLERY
@@ -610,7 +611,7 @@ export default function Home() {
 
                   <Link
                     href="/models/slg-108"
-                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#0f0] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[white] transition hover:bg-[#C9D1DC] hover:text-black"
                   >
                     MORE INFORMATION
                   </Link>
@@ -674,14 +675,14 @@ export default function Home() {
                         .getElementById("mesh-sizes")
                         ?.scrollIntoView({ behavior: "smooth" })
                     }
-                   className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                   className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#0f0] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[white] transition hover:bg-[#C9D1DC] hover:text-black"
                   >
                     MESH SIZES
                   </button>
                   <button
                     type="button"
                     onClick={() => openMachineModal("SLG 78")}
-                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#0f0] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[white] transition hover:bg-[#C9D1DC] hover:text-black"
                   >
 
                     PHOTO GALLERY
@@ -689,7 +690,7 @@ export default function Home() {
 
                   <Link
                     href="/models/slg-78"
-                   className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                   className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#0f0] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[white] transition hover:bg-[#C9D1DC] hover:text-black"
                   >
                     MORE INFORMATION
                   </Link>
@@ -751,14 +752,14 @@ export default function Home() {
                         .getElementById("mesh-sizes")
                         ?.scrollIntoView({ behavior: "smooth" })
                     }
-                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#0f0] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[white] transition hover:bg-[#C9D1DC] hover:text-black"
                   >
                     MESH SIZES
                   </button>
                   <button
                     type="button"
                     onClick={() => openMachineModal("SLG 56")}
-                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#0f0] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[white] transition hover:bg-[#C9D1DC] hover:text-black"
                   >
 
                     PHOTO GALLERY
@@ -766,7 +767,7 @@ export default function Home() {
 
                   <Link
                     href="/models/slg-56"
-                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#0f0] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[white] transition hover:bg-[#C9D1DC] hover:text-black"
                   >
                     MORE INFORMATION
                   </Link>
