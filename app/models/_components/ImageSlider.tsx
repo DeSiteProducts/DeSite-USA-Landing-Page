@@ -1,7 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
 type ImageSliderProps = {
   images: string[];
   alt: string;
@@ -11,33 +9,34 @@ export default function ImageSlider({
   images,
   alt,
 }: ImageSliderProps) {
-  const [activeImage, setActiveImage] = useState(0);
-
-  useEffect(() => {
-    if (images.length <= 1) return;
-
-    const interval = setInterval(() => {
-      setActiveImage((current) =>
-        current === images.length - 1 ? 0 : current + 1
-      );
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [images.length]);
-
   if (!images.length) return null;
 
+  const columns =
+    images.length === 1
+      ? "grid-cols-1"
+      : images.length === 2
+      ? "grid-cols-1 md:grid-cols-2"
+      : images.length === 3
+      ? "grid-cols-1 md:grid-cols-3"
+      : images.length === 4
+      ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
+      : images.length === 5
+      ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-5"
+      : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6";
+
   return (
-    <div className="relative mx-auto h-[200px] w-full max-w-[200px] overflow-hidden rounded-2xl">
+    <div className={`mx-auto grid w-full gap-4 ${columns}`}>
       {images.map((image, index) => (
-        <img
-          key={image}
-          src={image}
-          alt={`${alt} ${index + 1}`}
-          className={`absolute inset-0 m-auto h-full w-full object-contain transition-opacity duration-700 ${
-            index === activeImage ? "opacity-100" : "opacity-0"
-          }`}
-        />
+        <div
+          key={`${image}-${index}`}
+          className="flex min-h-[200px] items-center justify-center overflow-hidden rounded-2xl"
+        >
+          <img
+            src={image}
+            alt={`${alt} ${index + 1}`}
+            className="h-[200px] w-[200px] object-contain"
+          />
+        </div>
       ))}
     </div>
   );

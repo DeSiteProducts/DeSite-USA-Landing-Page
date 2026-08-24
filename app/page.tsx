@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import dynamic from "next/dynamic";
-import {  useState } from "react";
+import { useState } from "react";
 import VimeoSlider from "./models/_components/VimeoSlider";
 import ShippingQuoteButton from "./models/_components/ShippingQuoteButton";
 import DeferredShippingQuoteSection from "./models/_components/DeferredShippingQuoteSection";
@@ -127,7 +127,7 @@ const sliderVideos68 = [
     title: "68 Pro Screen Full Overview",
     url: "https://player.vimeo.com/video/1079537676?h=21b032376a",
   },
-  
+
   {
     title: "68 Pro Screen Testimonial",
     url: "https://player.vimeo.com/video/1118787608?h=28d1d5af5a",
@@ -171,7 +171,7 @@ const sliderVideosSlg108 = [
     title: "SLG 108 In Action",
     url: "https://player.vimeo.com/video/1130937806?share=copy&fl=sv&fe=ci",
   },
-  
+
   {
     title: "SLG 108 Spring Loaded Grizzly | Cantilevered Suspension System",
     url: "https://player.vimeo.com/video/1123901262?share=copy&fl=sv&fe=ci",
@@ -265,7 +265,7 @@ export default function Home() {
   const [activeSlideSlg56, setActiveSlideSlg56] = useState(0);
   const [isMachineModalOpen, setIsMachineModalOpen] = useState(false);
   const [selectedMachineModel, setSelectedMachineModel] = useState("");
-  
+
   const openMachineModal = (model: string) => {
     setSelectedMachineModel(model);
     setIsMachineModalOpen(true);
@@ -308,7 +308,7 @@ export default function Home() {
         <section id="modelos" className="grid grid-cols-1 gap-6 md:grid-cols-1">
           <article className="rounded-3xl border border-white/15 bg-white p-6 text-[#03122B] shadow-xl shadow-black/20">
             {/* TOP: VIDEO + MACHINE INFO */}
-            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
+            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1.4fr_1fr]">
 
               {/* LEFT: VIDEO SLIDER */}
               <div>
@@ -320,9 +320,9 @@ export default function Home() {
               </div>
 
               {/* RIGHT: MACHINE INFO */}
-              <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+              <div className="flex flex-col items-center text-center lg:items-center lg:text-center">
 
-                <h2 className="mt-3 text-3xl font-bold text-[#03122B] md:text-5xl">
+                <h2 className="mt-3 text-3xl font-bold text-[#03122B] md:text-5xl text-center">
                   108 ProScreen
                 </h2>
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#2674F0]">
@@ -332,6 +332,40 @@ export default function Home() {
                 <p className="mt-4 text-4xl font-extrabold tracking-tight text-[#082F72] md:text-5xl">
                   $19,900 USD
                 </p>
+
+                {/* BOTTOM: 2 COLUMNS FOR BUTTONS */}
+                <div className=" grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-2">
+
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      document
+                        .getElementById("mesh-sizes")
+                        ?.scrollIntoView({ behavior: "smooth" })
+                    }
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                  >
+                    MESH SIZES
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => openMachineModal("108 ProScreen")}
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                  >
+
+                    PHOTO GALLERY
+                  </button>
+
+                  <Link
+                    href="/models/108-proscreen"
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                  >
+                    MORE INFORMATION
+                  </Link>
+
+                  <ShippingQuoteButton model="108 ProScreen" />
+                </div>
               </div>
             </div>
 
@@ -349,43 +383,11 @@ export default function Home() {
               </div>
             </div>
 
-            {/* BOTTOM: 4 COLUMNS FOR BUTTONS */}
-            <div className=" grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-4">
 
-
-              <button
-                type="button"
-                onClick={() =>
-                  document
-                    .getElementById("mesh-sizes")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-                className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
-              >
-                MESH SIZES
-              </button>
-              <button
-                type="button"
-                onClick={() => openMachineModal("108 ProScreen")}
-                className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
-              >
-
-                PHOTO GALLERY
-              </button>
-
-              <Link
-                href="/models/108-proscreen"
-                className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
-              >
-                MORE INFORMATION
-              </Link>
-
-              <ShippingQuoteButton model="108 ProScreen" />
-            </div>
           </article>
 
           <article className="rounded-3xl border border-[#2674F0] bg-gradient-to-b from-[#2674F0] to-[#082F72] p-6 text-white shadow-xl shadow-[#03122B]/40">
-            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
+            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1.4fr_1fr]">
 
               {/* LEFT: VIDEO SLIDER */}
               <div>
@@ -397,7 +399,7 @@ export default function Home() {
               </div>
 
               {/* RIGHT: MACHINE INFO */}
-              <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+              <div className="flex flex-col items-center text-center lg:items-center lg:text-center">
 
                 <h2 className="mt-3 text-3xl font-bold text-white md:text-5xl">
                   78 ProScreen
@@ -409,6 +411,39 @@ export default function Home() {
                 <p className="mt-3 text-center text-3xl font-extrabold tracking-tight text-white md:text-5xl">
                   $13,900 USD
                 </p>
+                {/* BOTTOM: 4 COLUMNS FOR BUTTONS */}
+                <div className=" grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-2">
+
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      document
+                        .getElementById("mesh-sizes")
+                        ?.scrollIntoView({ behavior: "smooth" })
+                    }
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                  >
+                    MESH SIZES
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => openMachineModal("78 ProScreen")}
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                  >
+
+                    PHOTO GALLERY
+                  </button>
+
+                  <Link
+                    href="/models/78-proscreen"
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                  >
+                    MORE INFORMATION
+                  </Link>
+
+                  <ShippingQuoteButton model="78 ProScreen" />
+                </div>
               </div>
             </div>
             {/* MIDDLE: EQUIPMENT IMAGE SLIDER */}
@@ -425,47 +460,13 @@ export default function Home() {
               </div>
             </div>
 
-            {/* BOTTOM: 4 COLUMNS FOR BUTTONS */}
-            <div className=" grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-4">
-
-
-              <button
-                type="button"
-                onClick={() =>
-                  document
-                    .getElementById("mesh-sizes")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-                className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
-              >
-                MESH SIZES
-              </button>
-              <button
-                type="button"
-                onClick={() => openMachineModal("78 ProScreen")}
-                className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
-              >
-
-                PHOTO GALLERY
-              </button>
-
-              <Link
-                href="/models/78-proscreen"
-                className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
-              >
-                MORE INFORMATION
-              </Link>
-
-              <ShippingQuoteButton model="78 ProScreen" />
-            </div>
-
 
 
           </article>
 
           <article className="rounded-3xl border border-white/15 bg-white p-6 text-[#03122B] shadow-xl shadow-black/20">
             {/* TOP: VIDEO + MACHINE INFO */}
-            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
+            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1.4fr_1fr]">
 
               {/* LEFT: VIDEO SLIDER */}
               <div>
@@ -477,7 +478,7 @@ export default function Home() {
               </div>
 
               {/* RIGHT: MACHINE INFO */}
-              <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+              <div className="flex flex-col items-center text-center lg:items-center lg:text-center">
 
                 <h2 className="mt-3 text-3xl font-bold text-[#03122B] md:text-5xl">
                   68 ProScreen
@@ -489,7 +490,41 @@ export default function Home() {
                 <p className="mt-4 text-4xl font-extrabold tracking-tight text-[#082F72] md:text-5xl">
                   $7,900 USD
                 </p>
+                {/* BOTTOM: 2 COLUMNS FOR BUTTONS */}
+                <div className=" grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-2">
+
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      document
+                        .getElementById("mesh-sizes")
+                        ?.scrollIntoView({ behavior: "smooth" })
+                    }
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                  >
+                    MESH SIZES
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => openMachineModal("68 ProScreen")}
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                  >
+
+                    PHOTO GALLERY
+                  </button>
+
+                  <Link
+                    href="/models/68-proscreen"
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                  >
+                    MORE INFORMATION
+                  </Link>
+
+                  <ShippingQuoteButton model="68 ProScreen" />
+                </div>
               </div>
+
             </div>
 
             {/* MIDDLE: EQUIPMENT IMAGE SLIDER */}
@@ -506,41 +541,9 @@ export default function Home() {
               </div>
             </div>
 
-            {/* BOTTOM: 4 COLUMNS FOR BUTTONS */}
-            <div className=" grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-4">
 
 
-              <button
-                type="button"
-                onClick={() =>
-                  document
-                    .getElementById("mesh-sizes")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-                className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
-              >
-                MESH SIZES
-              </button>
-              <button
-                type="button"
-                onClick={() => openMachineModal("68 ProScreen")}
-                className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
-              >
 
-                PHOTO GALLERY
-              </button>
-
-              <Link
-                href="/models/68-proscreen"
-                className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
-              >
-                MORE INFORMATION
-              </Link>
-
-              <ShippingQuoteButton model="68 ProScreen" />
-            </div>
-            
-            
           </article>
 
 
@@ -556,8 +559,8 @@ export default function Home() {
 
 
           <article className="rounded-3xl border border-white/15 bg-white p-6 text-[#03122B] shadow-xl shadow-black/20">
-           {/* TOP: VIDEO + MACHINE INFO */}
-            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
+            {/* TOP: VIDEO + MACHINE INFO */}
+            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1.4fr_1fr]">
 
               {/* LEFT: VIDEO SLIDER */}
               <div>
@@ -569,7 +572,7 @@ export default function Home() {
               </div>
 
               {/* RIGHT: MACHINE INFO */}
-              <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+              <div className="flex flex-col items-center text-center lg:items-center lg:text-center">
 
                 <h2 className="mt-3 text-3xl font-bold text-[#03122B] md:text-5xl">
                   SLG 108
@@ -581,6 +584,39 @@ export default function Home() {
                 <p className="mt-4 text-4xl font-extrabold tracking-tight text-[#082F72] md:text-5xl">
                   $14,900 USD
                 </p>
+                {/* BOTTOM: 2 COLUMNS FOR BUTTONS */}
+                <div className=" grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-2">
+
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      document
+                        .getElementById("mesh-sizes")
+                        ?.scrollIntoView({ behavior: "smooth" })
+                    }
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                  >
+                    MESH SIZES
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => openMachineModal("SLG 108")}
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                  >
+
+                    PHOTO GALLERY
+                  </button>
+
+                  <Link
+                    href="/models/slg-108"
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                  >
+                    MORE INFORMATION
+                  </Link>
+
+                  <ShippingQuoteButton model="SLG 108" />
+                </div>
               </div>
             </div>
 
@@ -598,44 +634,12 @@ export default function Home() {
               </div>
             </div>
 
-            {/* BOTTOM: 4 COLUMNS FOR BUTTONS */}
-            <div className=" grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-4">
 
 
-              <button
-                type="button"
-                onClick={() =>
-                  document
-                    .getElementById("mesh-sizes")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-                className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
-              >
-                MESH SIZES
-              </button>
-              <button
-                type="button"
-                onClick={() => openMachineModal("SLG 108")}
-                className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
-              >
-
-                PHOTO GALLERY
-              </button>
-
-              <Link
-                href="/models/slg-108"
-                className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
-              >
-                MORE INFORMATION
-              </Link>
-
-              <ShippingQuoteButton model="SLG 108" />
-            </div>
-           
           </article>
 
           <article className="rounded-3xl border border-[#2674F0] bg-gradient-to-b from-[#2674F0] to-[#082F72] p-6 text-white shadow-xl shadow-[#03122B]/40">
-            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
+            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1.4fr_1fr]">
 
               {/* LEFT: VIDEO SLIDER */}
               <div>
@@ -647,7 +651,7 @@ export default function Home() {
               </div>
 
               {/* RIGHT: MACHINE INFO */}
-              <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+              <div className="flex flex-col items-center text-center lg:items-center lg:text-center">
 
                 <h2 className="mt-3 text-3xl font-bold text-white md:text-5xl">
                   SLG 78
@@ -659,6 +663,39 @@ export default function Home() {
                 <p className="mt-3 text-center text-3xl font-extrabold tracking-tight text-white md:text-5xl">
                   $7,900 USD
                 </p>
+                {/* BOTTOM: 2 COLUMNS FOR BUTTONS */}
+                <div className=" grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-2">
+
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      document
+                        .getElementById("mesh-sizes")
+                        ?.scrollIntoView({ behavior: "smooth" })
+                    }
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                  >
+                    MESH SIZES
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => openMachineModal("SLG 78")}
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                  >
+
+                    PHOTO GALLERY
+                  </button>
+
+                  <Link
+                    href="/models/slg-78"
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                  >
+                    MORE INFORMATION
+                  </Link>
+
+                  <ShippingQuoteButton model="SLG 78" />
+                </div>
               </div>
             </div>
             {/* MIDDLE: EQUIPMENT IMAGE SLIDER */}
@@ -675,46 +712,11 @@ export default function Home() {
               </div>
             </div>
 
-            {/* BOTTOM: 4 COLUMNS FOR BUTTONS */}
-            <div className=" grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-4">
-
-
-              <button
-                type="button"
-                onClick={() =>
-                  document
-                    .getElementById("mesh-sizes")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-                className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
-              >
-                MESH SIZES
-              </button>
-              <button
-                type="button"
-                onClick={() => openMachineModal("SLG 78")}
-                className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
-              >
-
-                PHOTO GALLERY
-              </button>
-
-              <Link
-                href="/models/slg-78"
-                className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
-              >
-                MORE INFORMATION
-              </Link>
-
-              <ShippingQuoteButton model="SLG 78" />
-            </div>
-            
-            
           </article>
 
           <article className="rounded-3xl border border-white/15 bg-white p-6 text-[#03122B] shadow-xl shadow-black/20">
             {/* TOP: VIDEO + MACHINE INFO */}
-            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
+            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1.4fr_1fr]">
 
               {/* LEFT: VIDEO SLIDER */}
               <div>
@@ -726,7 +728,7 @@ export default function Home() {
               </div>
 
               {/* RIGHT: MACHINE INFO */}
-              <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+              <div className="flex flex-col items-center text-center lg:items-center lg:text-center">
 
                 <h2 className="mt-3 text-3xl font-bold text-[#03122B] md:text-5xl">
                   SLG 56
@@ -736,8 +738,41 @@ export default function Home() {
                 </p>
 
                 <p className="mt-4 text-4xl font-extrabold tracking-tight text-[#082F72] md:text-5xl">
-                   $4,500 USD
+                  $4,500 USD
                 </p>
+                {/* BOTTOM: 2 COLUMNS FOR BUTTONS */}
+                <div className=" grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-2">
+
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      document
+                        .getElementById("mesh-sizes")
+                        ?.scrollIntoView({ behavior: "smooth" })
+                    }
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                  >
+                    MESH SIZES
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => openMachineModal("SLG 56")}
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                  >
+
+                    PHOTO GALLERY
+                  </button>
+
+                  <Link
+                    href="/models/slg-56"
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
+                  >
+                    MORE INFORMATION
+                  </Link>
+
+                  <ShippingQuoteButton model="SLG 56" />
+                </div>
               </div>
             </div>
 
@@ -755,40 +790,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* BOTTOM: 4 COLUMNS FOR BUTTONS */}
-            <div className=" grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-4">
 
 
-              <button
-                type="button"
-                onClick={() =>
-                  document
-                    .getElementById("mesh-sizes")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-                className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
-              >
-                MESH SIZES
-              </button>
-              <button
-                type="button"
-                onClick={() => openMachineModal("SLG 56")}
-                className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
-              >
-
-                PHOTO GALLERY
-              </button>
-
-              <Link
-                href="/models/slg-56"
-                className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#E0E3E8] px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-[#082F72] transition hover:bg-[#C9D1DC]"
-              >
-                MORE INFORMATION
-              </Link>
-
-              <ShippingQuoteButton model="SLG 56" />
-            </div>
-            
           </article>
         </section>
         <section id="mesh-sizes" className="mx-auto mt-8 w-full max-w-5xl rounded-2xl border border-white/20 bg-white/5 p-5 md:p-6">
@@ -802,7 +805,7 @@ export default function Home() {
             {/* IMAGE */}
             <div className="flex items-center justify-center bg-[#0B234A] p-6">
               <Image
-                src="/shared/square.webp"
+                src="/shared/square2.webp"
                 alt="Square mesh"
                 width={500}
                 height={500}
@@ -857,7 +860,7 @@ export default function Home() {
             {/* IMAGE */}
             <div className="flex items-center justify-center bg-[#0B234A] p-6">
               <Image
-                src="/shared/enlongated.webp"
+                src="/shared/enlongated1.webp"
                 alt="Elongated mesh"
                 width={500}
                 height={500}
@@ -904,9 +907,9 @@ export default function Home() {
           </div>
         </section>
 
-        
+
         <DeferredShippingQuoteSection />
-       
+
 
         <section
           id="contacto"
@@ -918,7 +921,7 @@ export default function Home() {
           <h3 className="text-2xl font-bold md:text-3xl">
             Have More Questions?
           </h3>
-          
+
           <p className="mt-3 text-[#E0E3E8]">
             Call us now for shipping quotes and current availability.
           </p>

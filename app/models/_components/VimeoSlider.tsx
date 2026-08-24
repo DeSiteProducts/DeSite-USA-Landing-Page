@@ -104,82 +104,55 @@ export default function VimeoSlider({
   }
 
   return (
-    <div>
-      {/* Video */}
-      <div
-        className={`relative overflow-hidden rounded-2xl border ${
-          dark
-            ? "border-white/30 bg-[#03122B]/20"
-            : "border-[#E0E3E8] bg-[#03122B]/5"
-        }`}
-      >
-        <div ref={playerRef} className="aspect-video w-full">
-          {shouldLoadPlayer ? (
-            <iframe
-              key={currentVideo.url}
-              src={`${currentVideo.url}?autoplay=0&title=0&byline=0&portrait=0`}
-              title={currentVideo.title}
-              className="h-full w-full"
-              loading="lazy"
-              allow="fullscreen; picture-in-picture"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            />
-          ) : null}
-        </div>
-
-        {/* Previous */}
-        <button
-          type="button"
-          aria-label="Previous video"
-          onClick={showPrevious}
-          className="absolute left-3 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-lg text-[#082F72] shadow transition hover:bg-white"
-        >
-          ‹
-        </button>
-
-        {/* Next */}
-        <button
-          type="button"
-          aria-label="Next video"
-          onClick={showNext}
-          className="absolute right-3 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-lg text-[#082F72] shadow transition hover:bg-white"
-        >
-          ›
-        </button>
-        
-      
-      </div>
-
-
-      {/* Dots */}
-      <div className="mt-3 flex items-center justify-center gap-2">
-        {Array.from({ length: dotCount }).map((_, index) => (
-          <button
-            key={index}
-            type="button"
-            aria-label={`Go to video ${index + 1}`}
-            onClick={() =>
-              setActiveSlide(
-                getDotSlideIndex(
-                  index,
-                  totalSlides,
-                  dotCount
-                )
-              )
-            }
-            className={`h-2 rounded-full transition ${
-              activeDot === index
-                ? dark
-                  ? "w-6 bg-white"
-                  : "w-6 bg-[#2674F0]"
-                : dark
-                  ? "w-2 bg-white/55 hover:bg-white/80"
-                  : "w-2 bg-[#7892B1]/60 hover:bg-[#7892B1]"
-            }`}
+  <div className="mx-auto w-full max-w-[1300px]">
+    {/* Video */}
+    <div
+      className={`relative overflow-hidden rounded-2xl border ${
+        dark
+          ? "border-white/30 bg-[#03122B]/20"
+          : "border-[#E0E3E8] bg-[#03122B]/5"
+      }`}
+    >
+      <div ref={playerRef} className="aspect-video w-full">
+        {shouldLoadPlayer ? (
+          <iframe
+            key={currentVideo.url}
+            src={`${currentVideo.url}?autoplay=0&title=0&byline=0&portrait=0`}
+            title={currentVideo.title}
+            className="h-full w-full"
+            loading="lazy"
+            allow="fullscreen; picture-in-picture"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
           />
-        ))}
+        ) : null}
       </div>
+
+      {/* Previous */}
+      <button
+        type="button"
+        aria-label="Previous video"
+        onClick={showPrevious}
+        className="absolute left-3 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-lg text-[#082F72] shadow transition hover:bg-white"
+      >
+        ‹
+      </button>
+
+      {/* Next */}
+      <button
+        type="button"
+        aria-label="Next video"
+        onClick={showNext}
+        className="absolute right-3 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-lg text-[#082F72] shadow transition hover:bg-white"
+      >
+        ›
+      </button>
     </div>
-  );
+
+    {/* Dots */}
+    <div className="mt-3 flex items-center justify-center gap-2">
+      {/* dots */}
+    </div>
+  </div>
+);
 }
