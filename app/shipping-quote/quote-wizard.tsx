@@ -44,8 +44,8 @@ type QuoteWizardProps = {
 const totalSteps = 9;
 
 const inputClass =
-  "w-full rounded-lg border border-[#C7D3E5] bg-white px-4 py-3 text-base text-[#03122B] outline-none transition placeholder:text-[#6C7A8E] focus:border-[#2674F0] focus:ring-4 focus:ring-[#2674F0]/15";
-const questionClass = "block text-2xl font-extrabold leading-tight text-[#03122B] md:text-3xl";
+  "w-full rounded-lg border border-[#C7D3E5] bg-white px-4 py-3 text-xl text-[#03122B] outline-none transition placeholder:text-[#6C7A8E] focus:border-[#2674F0] focus:ring-4 focus:ring-[#2674F0]/15";
+const questionClass = "block text-3xl font-extrabold leading-tight text-[#03122B] md:text-4xl";
 
 function getInitialState(initialModel?: string): WizardState {
   const modelDefaults = getInitialAnswersFromModel(initialModel);
@@ -80,7 +80,7 @@ function OptionButton({
     <button
       type="button"
       onClick={onClick}
-      className={`w-full rounded-lg border px-4 py-4 text-left text-sm font-semibold shadow-sm transition md:text-base ${selected
+      className={`w-full rounded-lg border px-4 py-4 text-left text-md font-semibold shadow-sm transition md:text-xl ${selected
         ? "border-[#2674F0] bg-[#EAF2FF] text-[#03122B] ring-4 ring-[#2674F0]/15"
         : "border-[#C7D3E5] bg-white text-[#03122B] hover:border-[#2674F0]"
         }`}
@@ -193,7 +193,7 @@ export default function QuoteWizard({ initialModel, isError }: QuoteWizardProps)
               <div
                 key={index}
                 className={`h-2 flex-1 rounded-full transition-all duration-300 ${isCompleted
-                  ? "bg-[#2674F0]"
+                  ? "bg-[#f02626]"
                   : "bg-white/20"
                   }`}
               />
@@ -215,7 +215,7 @@ export default function QuoteWizard({ initialModel, isError }: QuoteWizardProps)
               <h1 className="mt-4 text-3xl font-extrabold leading-tight md:text-4xl">
                 GET YOUR DISCOUNT CODE
               </h1>
-              <p className="mt-4 text-md leading-6 text-[#D8E3F4]">
+              <p className="mt-4 text-xl leading-6 text-[#D8E3F4]">
                 Answer one question at a time and we will recommend the best screener
                 for your equipment.
               </p>
@@ -337,7 +337,7 @@ export default function QuoteWizard({ initialModel, isError }: QuoteWizardProps)
                     <label htmlFor="phoneInput" className={questionClass}>
                      Your contact number please
                     </label>
-                    <p className="mt-3 text-sm leading-6 text-[#536177]">
+                    <p className="mt-3 text-lg leading-6 text-[#24282f]">
                       Enter a valid US or Canadian phone number. Format: (800) 890
                       1901.
                     </p>
@@ -460,8 +460,8 @@ export default function QuoteWizard({ initialModel, isError }: QuoteWizardProps)
                     <h2 className={questionClass}>Please confirm your contact consent.</h2>
                     {recommendation ? (
                       <div className="mt-5 rounded-lg border border-[#C7D3E5] bg-white p-4 text-sm text-[#536177] shadow-sm">
-                        <p className="font-semibold text-[#03122B]">We recommend our </p>
-                        <p className="mt-1 text-lg font-extrabold text-[#073073]">
+                        <p className="font-semibold text-xl text-[#03122B]">We recommend our </p>
+                        <p className="mt-1 text-xl font-extrabold text-[#073073]">
                           {recommendation.requiresReview
                             ? "Team review"
                             : recommendation.model}
@@ -476,9 +476,9 @@ export default function QuoteWizard({ initialModel, isError }: QuoteWizardProps)
                         type="checkbox"
                         checked={formState.consent}
                         onChange={(event) => updateField("consent", event.target.checked)}
-                        className="mt-1 size-4 accent-[#2674F0]"
+                        className="mt-1 size-8 accent-[#2674F0]"
                       />
-                      <span>
+                      <span className="text-xl">
                         May we contact you by phone, email, or SMS regarding your quote request?
                       </span>
                     </label>
@@ -500,7 +500,7 @@ export default function QuoteWizard({ initialModel, isError }: QuoteWizardProps)
                 type="button"
                 onClick={goBack}
                 disabled={step === 1}
-                className="rounded-lg border border-[#C7D3E5] px-6 py-3 text-sm font-bold uppercase tracking-wide text-[#03122B] transition hover:border-[#2674F0] hover:text-[#2674F0] disabled:cursor-not-allowed disabled:opacity-40"
+                className="rounded-lg border border-[#C7D3E5] px-6 py-3 text-md font-bold uppercase tracking-wide text-[#03122B] transition hover:border-[#2674F0] hover:text-[#2674F0] disabled:cursor-not-allowed disabled:opacity-40"
               >
                 Back
               </button>
@@ -509,14 +509,14 @@ export default function QuoteWizard({ initialModel, isError }: QuoteWizardProps)
                 <button
                   type="button"
                   onClick={goNext}
-                  className="rounded-lg bg-[#2674F0] px-7 py-3 text-sm font-bold uppercase tracking-wide text-white shadow-lg shadow-[#2674F0]/20 transition hover:bg-[#155EC7]"
+                  className="rounded-lg bg-[#2674F0] px-7 py-3 text-md font-bold uppercase tracking-wide text-white shadow-lg shadow-[#2674F0]/20 transition hover:bg-[#155EC7]"
                 >
                   Next
                 </button>
               ) : (
                 <button
                   type="submit"
-                  className="rounded-lg bg-[#2674F0] px-7 py-3 text-sm font-bold uppercase tracking-wide text-white shadow-lg shadow-[#2674F0]/20 transition hover:bg-[#155EC7]"
+                  className="rounded-lg bg-[#2674F0] px-7 py-3 text-md font-bold uppercase tracking-wide text-white shadow-lg shadow-[#2674F0]/20 transition hover:bg-[#155EC7]"
                 >
                   Submit Discount Request
                 </button>
