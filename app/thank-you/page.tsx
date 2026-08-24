@@ -70,43 +70,43 @@ export default async function ThankYouPage({ searchParams }: ThankYouPageProps) 
         </h1>
         {discountCode && (
           <div className="mt-6 rounded-2xl border-2 border-[#2674F0] bg-white p-6 text-center">
-            <p className="text-sm font-bold uppercase tracking-wider text-[#536177]">
+            <p className="text-lg font-bold uppercase tracking-wider text-[#536177]">
               Your discount code
             </p>
 
             <p className="mt-2 text-3xl font-extrabold tracking-[0.2em] text-[#2674F0]">
               {discountCode}
             </p>
-            <p className="text-sm font-bold uppercase tracking-wider text-[#536177]">
+            <p className="text-lg font-bold uppercase tracking-wider text-[#536177]">
               Save your discount code it’s valid for the next 30 days!
             </p>
           </div>
         )}
         {leadData.requiresReview ? (
           <>
-            <p className="mt-4 text-[#E0E3E8]">
+            <p className="mt-4 text-lg text-[#E0E3E8]">
               Our team will review your bucket size and recommend the best option
               for your equipment.
             </p>
-            <p className="mt-4 text-[#E0E3E8]">
+            <p className="mt-4 text-lg text-[#E0E3E8]">
               You will be contacted soon from +1 (806) 500-3915 with your
               shipping details and next steps.
             </p>
           </>
         ) : (
           <>
-            <p className="mt-4 text-[#E0E3E8]">
+            <p className="mt-4 text-lg text-[#E0E3E8]">
               Based on your answers, the best recommended model for you is:
             </p>
             <p className="mt-5 rounded-2xl border border-white/20 bg-white/10 px-5 py-4 text-2xl font-extrabold text-white">
               {leadData.recommendedModel || "Pending review"}
             </p>
             {leadData.recommendationNote ? (
-              <p className="mt-3 text-sm text-[#E0E3E8]">
+              <p className="mt-3 text-lg text-[#E0E3E8]">
                 {leadData.recommendationNote}
               </p>
             ) : null}
-            <p className="mt-4 text-[#E0E3E8]">
+            <p className="mt-4 text-lg text-[#E0E3E8]">
               Our team will review your request and contact you soon from +1
               (806) 500-3915 with your shipping details and next steps.
             </p>
@@ -115,13 +115,13 @@ export default async function ThankYouPage({ searchParams }: ThankYouPageProps) 
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <a
             href="tel:+18065003915"
-            className="inline-flex rounded-lg bg-[#2674F0] px-7 py-3 text-sm font-semibold uppercase tracking-wide transition hover:bg-[#5693F3]"
+            className="inline-flex rounded-lg bg-[#2674F0] px-7 py-3 text-lg font-semibold uppercase tracking-wide transition hover:bg-[#5693F3]"
           >
             Call +1 (806) 500-3915
           </a>
           <Link
             href="/"
-            className="inline-flex rounded-lg border border-white/25 px-7 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-white/10"
+            className="inline-flex rounded-lg border border-white/25 px-7 py-3 text-lg font-semibold uppercase tracking-wide text-white transition hover:bg-white/10"
           >
             Go Home
           </Link>
