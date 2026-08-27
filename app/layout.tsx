@@ -3,6 +3,9 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://desiteproducts.com"),
+  verification: {
+    google: "-C8rWak0gVp262BnlBwPTt-TjlE0wdMV8p6AxLekbyo",
+  },
   title: {
     default: "Topsoil & Rock Screeners | DeSite Products",
     template: "%s | DeSite Products",
