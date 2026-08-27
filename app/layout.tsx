@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://desiteproducts.com"),
@@ -49,7 +50,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const gaId = "G-JREKCNQSJR";
+  const gaId = "G-VDTWZD2082";
   const gtmId = "GTM-PX6HFKVL";
   const metaPixelId = "2030654847372180";
   const organizationJsonLd = {
@@ -65,7 +66,25 @@ export default function RootLayout({
     <html lang="en">
 
       <body className="antialiased">
-        
+        {/* Google Analytics */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+          strategy="afterInteractive"
+        />
+
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag(){
+              dataLayer.push(arguments);
+            }
+
+            gtag('js', new Date());
+            gtag('config', '${gaId}');
+          `}
+        </Script>
+
         {children}
       </body>
     </html>
