@@ -2,6 +2,7 @@
 
 import type { FormEvent, ReactNode } from "react";
 import { useMemo, useState } from "react";
+import { getVisitAttribution } from "../lib/traffic-attribution";
 import {
   BUCKET_WIDTH_OPTIONS,
   COUNTRY_OPTIONS,
@@ -174,6 +175,11 @@ export default function QuoteWizard({ initialModel, isError }: QuoteWizardProps)
     if (validationMessage) {
       event.preventDefault();
       setMessage(validationMessage);
+      return;
+    }
+    const attributionInput = event.currentTarget.elements.namedItem("trafficAttribution");
+    if (attributionInput instanceof HTMLInputElement) {
+      attributionInput.value = JSON.stringify(getVisitAttribution());
     }
   };
 
@@ -239,6 +245,7 @@ export default function QuoteWizard({ initialModel, isError }: QuoteWizardProps)
             className="flex min-h-[560px] flex-col p-6 md:p-10"
           >
             <input type="hidden" name="vibrationNeeded" value={formState.vibrationNeeded} />
+            <input type="hidden" name="trafficAttribution" defaultValue="" />
             <input type="hidden" name="bucketWidthRange" value={formState.bucketWidthRange} />
             <input type="hidden" name="leadTime" value={formState.leadTime} />
             <input type="hidden" name="fullName" value={formState.fullName.trim()} />

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { normalizeTrafficAttribution } from "../../lib/traffic-attribution";
 
 import {
   EMAIL_REGEX,
@@ -78,6 +79,14 @@ function escapeHtml(value: string): string {
 export async function POST(request: Request) {
   try {
     const formData = await request.formData();
+    let attributionData: unknown;
+    try {
+      const raw = toStringValue(formData.get("trafficAttribution"));
+      attributionData = raw.length <= 4000 ? JSON.parse(raw) : undefined;
+    } catch {
+      // Missing or malformed optional metadata must not block a quote request.
+    }
+    const trafficAttribution = normalizeTrafficAttribution(attributionData);
 
     const vibrationNeeded = toStringValue(formData.get("vibrationNeeded"));
     const bucketWidthRange = toStringValue(formData.get("bucketWidthRange"));
@@ -156,7 +165,9 @@ export async function POST(request: Request) {
         country,
         financing,
         consent,
-        discountCode
+        discountCode,
+        leadSource: trafficAttribution.source,
+        trafficAttribution,
       }),
     });
 
