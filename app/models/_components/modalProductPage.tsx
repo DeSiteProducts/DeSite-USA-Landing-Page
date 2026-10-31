@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { galvanizedModels } from "../galvanized-models";
 import { useEffect, useState } from "react";
 
 type MachineImage = {
@@ -22,6 +23,7 @@ type MachineModelModalProps = {
 
 // Aquí relacionas cada modelo con sus imágenes y bucket.
 const machineModels: Record<string, MachineModelData> = {
+    ...galvanizedModels,
     "108 ProScreen": {
         model: "108 ProScreen",
         bucketSize: "Design For Buckets Up To 108 inches",
@@ -466,6 +468,9 @@ export default function MachineModelModal({
                         </h2>
                     </div>
 
+                    {machine.images.length === 0 && (
+                        <p className="py-16 text-center text-xl font-semibold">Photos coming soon</p>
+                    )}
                     {/* IMAGE GALLERY */}
                     <div className="mx-auto mt-8 w-full">
                         <div

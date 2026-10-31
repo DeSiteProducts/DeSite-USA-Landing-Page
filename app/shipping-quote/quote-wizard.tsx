@@ -18,6 +18,7 @@ import {
   formatPhoneNumber,
   getInitialAnswersFromModel,
   getRecommendation,
+  getRecommendedModels,
   isPhoneNumberValid,
 } from "./quote-flow";
 
@@ -468,11 +469,14 @@ export default function QuoteWizard({ initialModel, isError }: QuoteWizardProps)
                     {recommendation ? (
                       <div className="mt-5 rounded-lg border border-[#C7D3E5] bg-white p-4 text-sm text-[#536177] shadow-sm">
                         <p className="font-semibold text-xl text-[#03122B]">We recommend our </p>
-                        <p className="mt-1 text-xl font-extrabold text-[#073073]">
-                          {recommendation.requiresReview
-                            ? "Team review"
-                            : recommendation.model}
-                        </p>
+                        {(recommendation.requiresReview
+                          ? ["Team review"]
+                          : getRecommendedModels(recommendation.model)
+                        ).map((model) => (
+                          <p key={model} className="mt-1 text-xl font-extrabold text-[#073073]">
+                            {model}
+                          </p>
+                        ))}
                         {recommendation.note ? (
                           <p className="mt-2 leading-6">{recommendation.note}</p>
                         ) : null}

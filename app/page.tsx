@@ -8,6 +8,8 @@ import ShippingQuoteButton from "./models/_components/ShippingQuoteButton";
 import DeferredShippingQuoteSection from "./models/_components/DeferredShippingQuoteSection";
 import ImageSlider from "./models/_components/ImageSlider";
 import Link from "next/link";
+import GalvanizedGallery from "./models/_components/GalvanizedGallery";
+import BlackFridayCountdown from "./black-friday-countdown";
 
 
 const MachineModelModal = dynamic(
@@ -288,6 +290,8 @@ export default function Home() {
   };
 
   return (
+    <>
+    <BlackFridayCountdown />
     <main className="min-h-screen bg-gradient-to-b from-[#03122B] via-[#073073] to-[#082F72] px-6 py-12 text-white md:px-12">
       <section className="mx-auto flex w-full max-w-6xl flex-col gap-12">
         <div className="rounded-3xl border border-white/15 bg-white/8 p-8 backdrop-blur-sm md:p-12">
@@ -324,6 +328,246 @@ export default function Home() {
         </div>
 
         <section id="modelos" className="grid grid-cols-1 gap-6 md:grid-cols-1">
+          <article className="sale-machine-card rounded-3xl border border-[#2674F0] bg-gradient-to-b from-[#2674F0] to-[#082F72] p-6 text-white shadow-xl shadow-[#03122B]/40">
+            <div className="machine-sale-ribbon"><span>ON SALE</span></div>
+            {/* TOP: VIDEO + MACHINE INFO */}
+            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1.4fr_1fr]">
+
+              {/* LEFT: VIDEO SLIDER */}
+              <div>
+                <GalvanizedGallery model="108 ProScreen Galvanized" showButton={false} />
+              </div>
+
+              {/* RIGHT: MACHINE INFO */}
+              <div className="flex flex-col items-center text-center lg:items-center lg:text-center">
+
+                <h2 className="mt-3 text-4xl font-bold text-white md:text-6xl">
+                  108 ProScreen Galvanized
+                </h2>
+                <p className="text-lg font-semibold uppercase tracking-[0.14em] text-[#E0E3E8]">
+                  New 2027 Forever Series
+                </p>
+
+                <p className="mt-3 text-center text-4xl font-extrabold tracking-tight text-white md:text-6xl">
+                  $19,900 USD
+                </p>
+                <p className="mt-2 text-center text-2xl font-semibold text-white/80 md:text-3xl"><span className="sr-only">Original price: </span><del>$20,900 USD</del></p>
+                <p className="limited-stock-notice mt-4 text-center text-xl font-extrabold uppercase tracking-wide sm:text-2xl">Limited stock available</p>
+
+
+                {/* BOTTOM: 2 COLUMNS FOR BUTTONS */}
+                <div className=" grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-2">
+
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      document
+                        .getElementById("mesh-sizes")
+                        ?.scrollIntoView({ behavior: "smooth" })
+                    }
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#0f0] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[black] transition hover:bg-[#C9D1DC] hover:text-black"
+                  >
+                    MESH SIZES
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => openMachineModal("108 ProScreen Galvanized")}
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#0f0] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[black] transition hover:bg-[#C9D1DC] hover:text-black"
+                  >
+
+                    PHOTO GALLERY
+                  </button>
+
+                  <Link
+                    href="/models/108-proscreen-galvanized"
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#0f0] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[black] transition hover:bg-[#C9D1DC] hover:text-black"
+                  >
+                    MORE INFORMATION
+                  </Link>
+
+                  <ShippingQuoteButton model="108 ProScreen Galvanized" />
+                </div>
+              </div>
+            </div>
+
+            {/* MIDDLE: EQUIPMENT IMAGE SLIDER */}
+            <div className="mt-10">
+              <p className=" mt-4 text-center text-xl font-bold uppercase tracking-[0.14em] text-[#E0E3E8]">
+                DESIGNED FOR FULL SIZED EQUIPMENT
+              </p>
+
+              <div className="">
+                <ImageSlider
+                  images={sliderImages108}
+                  alt="108 ProScreen Galvanized"
+                />
+              </div>
+            </div>
+
+
+          </article>
+
+          <article className="sale-machine-card rounded-3xl border border-[#2674F0] bg-gradient-to-b from-[#2674F0] to-[#082F72] p-6 text-white shadow-xl shadow-[#03122B]/40">
+            <div className="machine-sale-ribbon"><span>ON SALE</span></div>
+            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1.4fr_1fr]">
+
+              {/* LEFT: VIDEO SLIDER */}
+              <div>
+                <GalvanizedGallery model="78 ProScreen Galvanized" showButton={false} />
+              </div>
+
+              {/* RIGHT: MACHINE INFO */}
+              <div className="flex flex-col items-center text-center lg:items-center lg:text-center">
+
+                <h2 className="mt-3 text-4xl font-bold text-white md:text-6xl">
+                  78 ProScreen Galvanized
+                </h2>
+                <p className="text-lg font-semibold uppercase tracking-[0.14em] text-[#E0E3E8]">
+                  New 2027 Forever Series
+                </p>
+
+                <p className="mt-3 text-center text-4xl font-extrabold tracking-tight text-white md:text-6xl">
+                  $13,900 USD
+                </p>
+                <p className="mt-2 text-center text-2xl font-semibold text-white/80 md:text-3xl"><span className="sr-only">Original price: </span><del>$14,900 USD</del></p>
+                <p className="limited-stock-notice mt-4 text-center text-xl font-extrabold uppercase tracking-wide sm:text-2xl">Limited stock available</p>
+
+                {/* BOTTOM: 4 COLUMNS FOR BUTTONS */}
+                <div className=" grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-2">
+
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      document
+                        .getElementById("mesh-sizes")
+                        ?.scrollIntoView({ behavior: "smooth" })
+                    }
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#0f0] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[black] transition hover:bg-[#C9D1DC] hover:text-black"
+                  >
+                    MESH SIZES
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => openMachineModal("78 ProScreen Galvanized")}
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#0f0] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[black] transition hover:bg-[#C9D1DC] hover:text-black"
+                  >
+
+                    PHOTO GALLERY
+                  </button>
+
+                  <Link
+                    href="/models/78-proscreen-galvanized"
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#0f0] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[black] transition hover:bg-[#C9D1DC] hover:text-black"
+                  >
+                    MORE INFORMATION
+                  </Link>
+
+                  <ShippingQuoteButton model="78 ProScreen Galvanized" />
+                </div>
+              </div>
+            </div>
+            {/* MIDDLE: EQUIPMENT IMAGE SLIDER */}
+            <div className="mt-10">
+              <p className=" mt-4 text-center text-xl font-bold uppercase tracking-[0.14em] text-[#E0E3E8]">
+                DESIGNED FOR MID SIZE EQUIPMENT
+              </p>
+
+              <div className="">
+                <ImageSlider
+                  images={sliderImages78}
+                  alt="78 ProScreen Galvanized"
+                />
+              </div>
+            </div>
+
+
+
+          </article>
+
+          <article className="sale-machine-card rounded-3xl border border-[#2674F0] bg-gradient-to-b from-[#2674F0] to-[#082F72] p-6 text-white shadow-xl shadow-[#03122B]/40">
+            <div className="machine-sale-ribbon"><span>ON SALE</span></div>
+            {/* TOP: VIDEO + MACHINE INFO */}
+            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1.4fr_1fr]">
+
+              {/* LEFT: VIDEO SLIDER */}
+              <div>
+                <GalvanizedGallery model="68 ProScreen Galvanized" showButton={false} />
+              </div>
+
+              {/* RIGHT: MACHINE INFO */}
+              <div className="flex flex-col items-center text-center lg:items-center lg:text-center">
+
+                <h2 className="mt-3 text-4xl font-bold text-white md:text-6xl">
+                  68 ProScreen Galvanized
+                </h2>
+                <p className="text-lg font-semibold uppercase tracking-[0.14em] text-[#E0E3E8]">
+                  New 2027 Forever Series
+                </p>
+
+                <p className="mt-3 text-center text-4xl font-extrabold tracking-tight text-white md:text-6xl">
+                  $7,900 USD
+                </p>
+                <p className="mt-2 text-center text-2xl font-semibold text-white/80 md:text-3xl"><span className="sr-only">Original price: </span><del>$8,900 USD</del></p>
+                <p className="limited-stock-notice mt-4 text-center text-xl font-extrabold uppercase tracking-wide sm:text-2xl">Limited stock available</p>
+
+                {/* BOTTOM: 2 COLUMNS FOR BUTTONS */}
+                <div className=" grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-2">
+
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      document
+                        .getElementById("mesh-sizes")
+                        ?.scrollIntoView({ behavior: "smooth" })
+                    }
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#0f0] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[black] transition hover:bg-[#C9D1DC] hover:text-black"
+                  >
+                    MESH SIZES
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => openMachineModal("68 ProScreen Galvanized")}
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#0f0] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[black] transition hover:bg-[#C9D1DC] hover:text-black"
+                  >
+
+                    PHOTO GALLERY
+                  </button>
+
+                  <Link
+                    href="/models/68-proscreen-galvanized"
+                    className="mt-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-[#0f0] px-6 py-2.5 text-md font-semibold uppercase tracking-wide text-[black] transition hover:bg-[#C9D1DC] hover:text-black"
+                  >
+                    MORE INFORMATION
+                  </Link>
+
+                  <ShippingQuoteButton model="68 ProScreen Galvanized" />
+                </div>
+              </div>
+
+            </div>
+
+            {/* MIDDLE: EQUIPMENT IMAGE SLIDER */}
+            <div className="mt-10">
+              <p className=" mt-4 text-center text-xl font-bold uppercase tracking-[0.14em] text-[#E0E3E8]">
+                DESIGNED FOR COMPACT EQUIPMENT
+              </p>
+
+              <div className="">
+                <ImageSlider
+                  images={sliderImages68}
+                  alt="68 ProScreen Galvanized"
+                />
+              </div>
+            </div>
+
+
+
+
+          </article>
+
           <article className="rounded-3xl border border-[#2674F0] bg-gradient-to-b from-[#2674F0] to-[#082F72] p-6 text-white shadow-xl shadow-[#03122B]/40">
             {/* TOP: VIDEO + MACHINE INFO */}
             <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1.4fr_1fr]">
@@ -548,7 +792,7 @@ export default function Home() {
             {/* MIDDLE: EQUIPMENT IMAGE SLIDER */}
             <div className="mt-10">
               <p className=" mt-4 text-center text-xl font-bold uppercase tracking-[0.14em] text-[#E0E3E8]">
-                DESIGNED FOR MINI SIZED EQUIPMENT
+                DESIGNED FOR COMPACT EQUIPMENT
               </p>
 
               <div className="">
@@ -576,7 +820,8 @@ export default function Home() {
         <section id="modelos" className="grid grid-cols-1 gap-6 md:grid-cols-1">
 
 
-          <article className="rounded-3xl border border-[#2674F0] bg-gradient-to-b from-[#2674F0] to-[#082F72] p-6 text-white shadow-xl shadow-[#03122B]/40">
+          <article className="sale-machine-card rounded-3xl border border-[#2674F0] bg-gradient-to-b from-[#2674F0] to-[#082F72] p-6 text-white shadow-xl shadow-[#03122B]/40">
+            <div className="machine-sale-ribbon"><span>ON SALE</span></div>
             {/* TOP: VIDEO + MACHINE INFO */}
             <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1.4fr_1fr]">
 
@@ -600,7 +845,11 @@ export default function Home() {
                 </p>
 
                 <p className="mt-3 text-center text-4xl font-extrabold tracking-tight text-white md:text-6xl">
-                  $14,900 USD
+                  <span className="sr-only">Sale price: </span>$13,400 USD
+                </p>
+                <p className="mt-2 text-center text-2xl font-semibold text-white/80 md:text-3xl">
+                  <span className="sr-only">Original price: </span>
+                  <del>$14,900 USD</del>
                 </p>
                 {/* BOTTOM: 2 COLUMNS FOR BUTTONS */}
                 <div className=" grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-2">
@@ -656,7 +905,8 @@ export default function Home() {
 
           </article>
 
-          <article className="rounded-3xl border border-[#2674F0] bg-gradient-to-b from-[#2674F0] to-[#082F72] p-6 text-white shadow-xl shadow-[#03122B]/40">
+          <article className="sale-machine-card rounded-3xl border border-[#2674F0] bg-gradient-to-b from-[#2674F0] to-[#082F72] p-6 text-white shadow-xl shadow-[#03122B]/40">
+            <div className="machine-sale-ribbon"><span>ON SALE</span></div>
             <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1.4fr_1fr]">
 
               {/* LEFT: VIDEO SLIDER */}
@@ -679,7 +929,11 @@ export default function Home() {
                 </p>
 
                 <p className="mt-3 text-center text-4xl font-extrabold tracking-tight text-white md:text-6xl">
-                  $7,900 USD
+                  <span className="sr-only">Sale price: </span>$7,100 USD
+                </p>
+                <p className="mt-2 text-center text-2xl font-semibold text-white/80 md:text-3xl">
+                  <span className="sr-only">Original price: </span>
+                  <del>$7,900 USD</del>
                 </p>
                 {/* BOTTOM: 2 COLUMNS FOR BUTTONS */}
                 <div className=" grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-2">
@@ -732,7 +986,8 @@ export default function Home() {
 
           </article>
 
-          <article className="rounded-3xl border border-[#2674F0] bg-gradient-to-b from-[#2674F0] to-[#082F72] p-6 text-white shadow-xl shadow-[#03122B]/40">
+          <article className="sale-machine-card rounded-3xl border border-[#2674F0] bg-gradient-to-b from-[#2674F0] to-[#082F72] p-6 text-white shadow-xl shadow-[#03122B]/40">
+            <div className="machine-sale-ribbon"><span>ON SALE</span></div>
             {/* TOP: VIDEO + MACHINE INFO */}
             <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1.4fr_1fr]">
 
@@ -756,7 +1011,11 @@ export default function Home() {
                 </p>
 
                 <p className="mt-3 text-center text-4xl font-extrabold tracking-tight text-white md:text-6xl">
-                  $4,500 USD
+                  <span className="sr-only">Sale price: </span>$3,500 USD
+                </p>
+                <p className="mt-2 text-center text-2xl font-semibold text-white/80 md:text-3xl">
+                  <span className="sr-only">Original price: </span>
+                  <del>$4,500 USD</del>
                 </p>
                 {/* BOTTOM: 2 COLUMNS FOR BUTTONS */}
                 <div className=" grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-2">
@@ -960,5 +1219,6 @@ export default function Home() {
         model={selectedMachineModel}
       />
     </main>
+    </>
   );
 }

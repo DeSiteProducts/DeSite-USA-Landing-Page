@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import LeadConversionEvents from "./conversion-events";
+import { getRecommendedModels } from "../shipping-quote/quote-flow";
 
 export const metadata: Metadata = {
   title: "Thank You",
@@ -32,6 +33,7 @@ export default async function ThankYouPage({ searchParams }: ThankYouPageProps) 
   const params = await searchParams;
   const isSuccessfulLead = params?.success === "1";
   const recommendedModel = params?.recommendedModel ?? params?.model ?? "";
+  const recommendedModels = getRecommendedModels(recommendedModel || "Pending review");
   const value = Number(params?.value ?? "0");
   const currency: "USD" | "CAD" = params?.currency === "CAD" ? "CAD" : "USD";
   const leadData = {
@@ -96,10 +98,14 @@ export default async function ThankYouPage({ searchParams }: ThankYouPageProps) 
         ) : (
           <>
             <p className="mt-4 text-lg text-[#E0E3E8]">
-              Based on your answers, the best recommended model for you is:
+              {recommendedModels.length > 1
+                ? "Based on your answers, we recommend these models:"
+                : "Based on your answers, the best recommended model for you is:"}
             </p>
             <p className="mt-5 rounded-2xl border border-white/20 bg-white/10 px-5 py-4 text-2xl font-extrabold text-white">
-              {leadData.recommendedModel || "Pending review"}
+              {recommendedModels.map((model) => (
+                <span key={model} className="block">{model}</span>
+              ))}
             </p>
             {leadData.recommendationNote ? (
               <p className="mt-3 text-lg text-[#E0E3E8]">
