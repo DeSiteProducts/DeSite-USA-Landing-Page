@@ -39,7 +39,7 @@ export default function BlackFridayCountdown() {
           );
         })}
       </div>
-      <p className="sale-countdown-title">Early Black Friday Sale</p>
+      <p className="sale-countdown-title">Black Friday is live now!</p>
     </section>
   );
 }
