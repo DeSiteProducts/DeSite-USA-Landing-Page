@@ -26,7 +26,6 @@ export const handler = async (event) => {
     country,
     financing,
     consent,
-    discountCode,
     leadSource,
     trafficAttribution
   } = body;
@@ -50,7 +49,7 @@ export const handler = async (event) => {
   console.log("BODY:", JSON.stringify(body, null, 2));
 
   const subject =
-    `New Shipping Discount Code Request - Recommended Model: ${recommendation.model}`;
+    `New Quote Request - Recommended Model: ${recommendation.model}`;
   const attributionFields = [
     ["Lead Source", leadSource || trafficAttribution?.source || "direct_unknown"],
     ["UTM Source", trafficAttribution?.utmSource || "Not available"],
@@ -61,7 +60,7 @@ export const handler = async (event) => {
   ];
 
   const bodyText = [
-    "New shipping discount code request",
+    "New quote request",
     "",
     `Recommended Model: ${recommendation.model}`,
     ...recommendationNoteLine,
@@ -78,7 +77,6 @@ export const handler = async (event) => {
     `Country: ${country}`,
     `Interested in Financing: ${financing}`,
     `Consent Confirmation: ${consent}`,
-    `Discount Code: ${discountCode}`,
     ...attributionFields.map(([label, value]) => `${label}: ${value}`),
   ].join("\n");
 
@@ -97,7 +95,7 @@ export const handler = async (event) => {
         />
 
         <p style="margin:0;font-size:12px;letter-spacing:.12em;font-weight:700;color:#afc2dc;text-transform:uppercase;">
-          Shipping Discount Code Request
+          Get a Quote
         </p>
 
         <h1 style="margin:10px 0 0;font-size:24px;line-height:1.25;color:#ffffff;">
@@ -111,7 +109,7 @@ export const handler = async (event) => {
       <td style="padding:20px 24px 8px;">
 
         <p style="margin:0 0 14px;font-size:14px;color:#3e5067;">
-          A new customer submitted a discount code request on DeSite USA. Details are below:
+          A new customer submitted a quote request on DeSite USA. Details are below:
         </p>
 
         <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="border-collapse:separate;border-spacing:0 10px;">
@@ -225,12 +223,6 @@ export const handler = async (event) => {
             </td>
           </tr>
 
-          <tr>
-            <td style="padding:14px 16px;background:#f8fbff;border:1px solid #dbe5f2;border-radius:10px;">
-              <strong>Discount Code:</strong>
-              ${escapeHtml(discountCode)}
-            </td>
-          </tr>
              
 
           ${attributionFields.map(([label, value]) => `

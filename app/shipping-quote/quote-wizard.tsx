@@ -190,7 +190,7 @@ export default function QuoteWizard({ initialModel, isError }: QuoteWizardProps)
     <>
       <div className="w-full p-2">
         <p className="mt-4 mb-4 text-md sm:text-xl font-semibold text-center text-[#D8E3F4]">
-          <b>{100 - progressPercent}</b>% LEFT TO UNLOCK YOUR DISCOUNT CODE
+          <b>{100 - progressPercent}</b>% LEFT TO GET A QUOTE
         </p>
         <div className="flex items-center gap-2">
           {Array.from({ length: totalSteps }).map((_, index) => {
@@ -220,7 +220,7 @@ export default function QuoteWizard({ initialModel, isError }: QuoteWizardProps)
                 DeSite Products
               </p>
               <h1 className="mt-4 text-3xl font-extrabold leading-tight md:text-4xl">
-                GET YOUR DISCOUNT CODE
+                Get a Quote
               </h1>
               <p className="mt-4 text-xl leading-6 text-[#D8E3F4]">
                 Answer one question at a time and we will recommend the best screener
@@ -529,7 +529,7 @@ export default function QuoteWizard({ initialModel, isError }: QuoteWizardProps)
                   type="submit"
                   className="rounded-lg bg-[#2674F0] px-7 py-3 text-md font-bold uppercase tracking-wide text-white shadow-lg shadow-[#2674F0]/20 transition hover:bg-[#155EC7]"
                 >
-                  Submit Discount Request
+                  Get a Quote
                 </button>
               )}
             </div>

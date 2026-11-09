@@ -18,7 +18,7 @@ export default function ShippingQuoteSection() {
         <div className="mb-3 text-center">
           
           <h2 className="mt-3 text-2xl font-extrabold text-white md:text-4xl">
-             GET YOUR DISCOUNT CODE IN MINUTES
+             Get a Quote
           </h2>
         </div>
 
